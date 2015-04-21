@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Digital Age</title>
+    <meta name="description" content="" />
+    <!--<meta name="viewport" content="width=1024, maximum-scale=2.0" />-->
+    <!--<link rel="shortcut icon" href="favicon.ico" />-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/select2.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+</head>
+
+
+<body>
+    <nav>
+        <div class="logo_wrapper">
+            <a href="index.html" class="logo"></a>
+        </div>
+        <div class="nav_wrapper">
+            <ul>
+                <li class="nav_punkt_schedule"><a href="#"><i></i><span>Schedule</span></a></li>
+                <li class="nav_punkt_company"><a href="#"><i></i><span>Company</span></a></li>
+                <li class="nav_punkt_profile active"><a href="#"><i></i><span>My Profile</span></a></li>
+                <li class="nav_punkt_billing"><a href="#"><i></i><span>Billing</span></a></li>
+                <li class="nav_punkt_help"><a href="#"><i></i><span>Help</span></a></li>
+            </ul>
+            <div class="nav_pointer"></div>
+        </div>
+    </nav>
+    <header>
+        <form class="header_action">
+            <!--<button class="header_button_ico plus"></button>
+            <button class="header_button_ico add"></button>
+            <button class="header_button_ico settings"></button>
+            <button class="header_button_ico print"></button>
+            <button class="header_button_ico delete"></button>-->
+            <button class="header_button_ico logout"></button>
+        </form>
+        <h1>My Profile</h1>
+    </header>
+    <div id="content">
+        <div class="saving"><i><img src="img/load.gif" alt="..." /></i>Saved...</div>
+        <form action="" class="profile">
+            <section class="profile_header">
+                <div class="profile_header_avatar">
+                    <img src="img/temp/avatar.jpg" alt="Avatar" />
+                    <input type="file" title="Load new photo" />
+                </div>
+                <div class="profile_header_change-password">
+                    <i class="ico_change-password popup-open radial-effect" data-popup="change-pass"></i>
+                    <div class="popup" id="change-pass">
+                        <p class="popup_title">Change Password</p>
+                        <div class="input_wrapper lbord-red">
+                            <input type="password" value="" />
+                            <label class="input_label">Current Password</label>
+                        </div>
+                        <div class="input_wrapper lbord-red">
+                            <input type="password" value="" />
+                            <label class="input_label">New Password</label>
+                        </div>
+                        <div class="input_wrapper lbord-red">
+                            <input type="password" value="" />
+                            <label class="input_label">Confirm Password</label>
+                        </div>
+                        <div class="profile_header_change-password_submit">
+                            <button class="button-ok"></button>
+                        </div>
+                    </div> 
+                </div>
+                <h2 class="profile_header_name">
+                    Hi, <span>Mia Wasikowska</span>
+                    <i class="ico_change-name radial-effect"></i>
+                </h2>
+                <div class="profile_header_icons">
+                    <i class="ico_phone radial-effect" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
+                    <i class="ico_email radial-effect" title="<p>email: test@test.com</p>"></i>
+                </div>
+            </section>
+            <section class="profile_body">
+                <div>
+                    <h3>Timezone</h3>
+                    <div class="select_wrapper profile_body_timezone">
+                        <select>
+                            <option>(GMT -9.5) Pacific/Marquesas</option>
+                            <option>(GMT -8.5) Pacific/Marquesas</option>
+                            <option>(GMT -7.5) Pacific/Marquesas</option>
+                        </select>
+                    </div>
+                    <h3>Alert Preferences</h3>
+                    <table class="profile_body_alerts">
+                        <tbody>
+                            <tr>
+                                <th>Schedule updates</th>
+                                <td><input type="checkbox" value="r1" id="r1" /><label for="r1">SMS</label></td>
+                                <td><input type="checkbox" value="r2" id="r2" /><label for="r2">Email</label></td>
+                            </tr>
+                            <tr>
+                                <th>New employee</th>
+                                <td><input type="checkbox" value="r3" id="r3" /><label for="r3">SMS</label></td>
+                                <td><input type="checkbox" value="r4" id="r4" /><label for="r4">Email</label></td>
+                            </tr>
+                            <tr>
+                                <th>Shift reminders</th>
+                                <td><input type="checkbox" value="r5" id="r5" /><label for="r5">SMS</label></td>
+                                <td><input type="checkbox" value="r6" id="r6" /><label for="r6">Email</label></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div><!--
+                --><div>
+                    <h3>Do not disturb me</h3>
+                    <div class="profile_body_time-interval">
+                        <div class="input_wrapper with-ico pull-left">
+                            <i class="ico_time"></i>
+                            <input type="text" value="20:00" />
+                        </div>
+                        <div class="input_wrapper with-ico pull-right">
+                            <i class="ico_time"></i>
+                            <input type="text" value="8:00" />
+                        </div>
+                        &mdash;
+                    </div>
+                    <h3>Social</h3>
+                    <p>Connect to social networks, so you can view the schedule there without logging in Shedule. You can even customize «Schedule Sharing», so your friends can see when you get off work.</p>
+                    <div class="profile_body_social-checkbox">
+                        <input type="checkbox" value="c1" id="c1" /><label for="c1"><i class="social-fb"></i></label>
+                        <input type="checkbox" value="c2" id="c2" /><label for="c2"><i class="social-tw"></i></label>
+                        <input type="checkbox" value="c3" id="c3" /><label for="c3"><i class="social-gp"></i></label>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </div>
+    <footer>
+        <a href="#" class="pull-right">Developers</a>
+        Copyright © 2015 Company name Inc
+        <hr />
+        All Rights Reserved
+        <hr />
+        <a href="#">Terms of Service</a>
+        <hr />
+        <a href="#">Privacy Policy</a>
+    </footer>
+</body>
+</html>
+
+

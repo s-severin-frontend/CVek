@@ -1,0 +1,57 @@
+.nav_punkt_schedule i {
+  background-position: -15px -19px; }
+
+.nav_punkt_company i {
+  background-position: -15px -102px;
+  height: 35px; }
+
+.nav_punkt_profile i {
+  background-position: -15px -170px;
+  height: 48px; }
+
+.nav_punkt_billing i {
+  background-position: -15px -263px;
+  height: 40px; }
+
+.nav_punkt_help i {
+  background-position: -14px -339px;
+  height: 51px; }
+
+.header_button_ico.logout {
+  background-position: -225px center; }
+.header_button_ico.delete {
+  background-position: -187px center; }
+.header_button_ico.print {
+  background-position: -143px center; }
+.header_button_ico.settings {
+  background-position: -95px center; }
+.header_button_ico.add {
+  background-position: -46px center; }
+.header_button_ico.plus {
+  background-position: 1px center; }
+
+[class^=ico_] {
+  background: url("../img/sprite.png") no-repeat; }
+  [class^=ico_].ico_phone {
+    background-position: 1px 0;
+    border-radius: 0; }
+  [class^=ico_].ico_change-name {
+    background-position: 1px -45px; }
+  [class^=ico_].ico_change-password {
+    background-position: 1px -85px; }
+  [class^=ico_].ico_email {
+    background-position: 0 -128px;
+    border-radius: 0; }
+  [class^=ico_].ico_time {
+    background-position: 4px -171px; }
+
+.profile_body_social-checkbox .social-fb {
+  background-position: -1px 0; }
+
+.profile_body_social-checkbox .social-tw {
+  background-position: -35px 0; }
+
+.profile_body_social-checkbox .social-gp {
+  background-position: -69px 0; }
+
+/*# sourceMappingURL=sprite.css.map */

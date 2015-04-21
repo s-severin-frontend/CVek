@@ -1,0 +1,140 @@
+html {
+    height: 100%;
+    min-width: 1220px;
+    background: #eceff1;
+}
+
+body {
+    font: normal normal 18px/30px 'Roboto', Arial, sans-serif;
+    color: #222;
+    -webkit-text-size-adjust: 100%;
+    min-height: 100%;
+    background: #eceff1;
+    font-weight: 100;
+}
+
+a {
+    color: #69c0f5;
+    text-decoration: none;
+    border-bottom: 1px solid #63bef3;
+    
+    &:hover {
+        text-decoration: none;
+        border-bottom-color: transparent;
+    }
+
+    &.ajax-link {
+        text-decoration: none;
+        border-bottom: 1px dashed;
+    }
+}
+
+p {
+    margin: 15px 0;
+    font-weight: 100;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 38px;
+    line-height: 100%;
+    margin: 0;
+}
+h2 {
+    font-weight: 100;
+    font-size: 36px;
+    line-height: 150%;
+    margin: 0;
+}
+h3 {
+    font-weight: 100;
+    font-size: 24px;
+    line-height: 120%;
+    margin: 0;
+}
+h4 {}
+h5 {}
+h6 {}
+
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+
+input[type=text],
+input[type=password] {
+
+}
+
+textarea {
+
+}
+
+input[type=submit],
+input[type=button] {
+
+}
+
+.clearfix:before, .clearfix:after {content:""; display:table}
+.clearfix:after {clear:both}
+.clearfix {*zoom:1}
+
+.pointer{
+    cursor: pointer;
+}
+
+.input_wrapper{
+    display: inline-block;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 2px 2px rgba(0,0,0,.22);
+    -moz-box-shadow: 1px 2px 2px rgba(0,0,0,.22);
+    box-shadow: 1px 2px 2px rgba(0,0,0,.22);
+    vertical-align: middle;
+    position: relative;
+    height: 43px;
+    padding: 0 15px;
+    &.lbord-red{
+        border-left: 15px solid #ef5350;
+    }
+    input{
+        border: none;
+        outline: none;
+        padding: 0;
+        margin: 0;
+        box-shadow: none;
+        color: #222;
+        font-size: 18px;
+        line-height: 48px;
+        font-weight: 100;
+        height: 43px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        background: none;
+    }
+    .input_label{
+        color: #b8b8b8;
+        font-size: 18px;
+        line-height: 45px;
+        font-weight: 100;
+        height: 43px;
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 0;
+        z-index: 1;
+        opacity: 1;
+    }
+    input:focus + .input_label, input.no-empty + .input_label{
+        font-size: 12px;
+        line-height: 12px;
+        opacity: .8;
+    }
+}
