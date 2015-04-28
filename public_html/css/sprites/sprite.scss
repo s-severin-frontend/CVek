@@ -39,12 +39,37 @@
         background-position: 0 -128px;
         border-radius: 0;
     }
-    &.ico_time{background-position: 4px -171px;}
+    &.ico_time{
+        background-position: -35px -84px;
+        width: 25px;
+    }
+    &.ico_select-day{
+        background-position: -32px 0;
+        border-radius: 0;
+    }
+    &.ico_current-day{
+        background-position: -32px -47px;
+        border-radius: 0;
+    }
 }
 
 .profile_body_social-checkbox .social-fb{background-position: -1px 0;}
 .profile_body_social-checkbox .social-tw{background-position: -35px 0;}
 .profile_body_social-checkbox .social-gp{background-position: -69px 0;}
 
-
-
+.color-5e35b1{background: #5e35b1;}
+.color-d32f2f{background: #d32f2f;}
+.color-d32f2f{background: #d32f2f;}
+.color-00796b{background: #00796b;}
+.color-e5c90e{background: #e5c90e;}
+.color-ab17bc{background: #ab17bc;}
+.color-17bca3{background: #17bca3;}
+.color-1736bc{background: #1736bc;}
+.color-97bc17{background: #97bc17;}
+.color-d98b8b{background: #d98b8b;}
+.color-e84a1d{background: #e84a1d;}
+.color-8bb6cf{background: #8bb6cf;}
+.color-0e8db0{background: #0e8db0;}
+.color-1c72a3{background: #1c72a3;}
+.color-dadada{background: #dadada;}
+/*.color-{background: #;}*/

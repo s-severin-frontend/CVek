@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Digital Age</title>
+    <meta name="description" content="" />
+    <!--<meta name="viewport" content="width=1024, maximum-scale=2.0" />-->
+    <!--<link rel="shortcut icon" href="favicon.ico" />-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/select2.js"></script>
+    <script type="text/javascript" src="js/waves.js"></script>
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+</head>
+
+
+<body>
+    <nav>
+        <div class="logo_wrapper">
+            <a href="index.html" class="logo"></a>
+        </div>
+        <div class="nav_wrapper">
+            <ul>
+                <li class="nav_punkt_schedule active"><a href="#"><i></i><span>Schedule</span></a></li>
+                <li class="nav_punkt_company"><a href="#"><i></i><span>Company</span></a></li>
+                <li class="nav_punkt_profile"><a href="#"><i></i><span>My Profile</span></a></li>
+                <li class="nav_punkt_billing"><a href="#"><i></i><span>Billing</span></a></li>
+                <li class="nav_punkt_help"><a href="#"><i></i><span>Help</span></a></li>
+            </ul>
+            <div class="nav_pointer"></div>
+        </div>
+    </nav>
+    <header>
+        <form class="header_action">
+            <!--<button class="header_button_ico plus"></button>
+            <button class="header_button_ico add"></button>-->
+            <button class="header_button_ico settings"></button>
+            <button class="header_button_ico print"></button>
+            <button class="header_button_ico delete"></button>
+            <button class="header_button_ico logout"></button>
+        </form>
+        <h1>Schedule</h1>
+    </header>
+    <div class="menu">
+        <button class="menu-toggle"></button>
+        <div class="menu_wrapper">
+            <section class="menu_filtr check-list">
+                <h3 class="menu_filtr_title aleft">
+                    <span class="check-all">All</span>
+                    Positions
+                </h3>
+                <form class="js-accordeon colorise">
+                    <fieldset class="color-5e35b1">
+                        <input type="checkbox" id="a1" /><label for="a1">Courier</label>
+                    </fieldset>
+                    <fieldset class="color-d32f2f">
+                        <input type="checkbox" id="a2" /><label for="a2">Manager</label>
+                    </fieldset>
+                    <fieldset class="color-d32f2f">
+                        <input type="checkbox" id="a3" /><label for="a3">Cook</label>
+                    </fieldset>
+                    <fieldset class="color-00796b">
+                        <input type="checkbox" id="a4" /><label for="a4">Cashier</label>
+                    </fieldset>
+                    <div class="js-accordeon_body">
+                        <fieldset class="color-e5c90e">
+                            <input type="checkbox" id="a5" /><label for="a5">Cleaner</label>
+                        </fieldset>
+                        <fieldset class="color-ab17bc">
+                            <input type="checkbox" id="a6" /><label for="a6">Shef</label>
+                        </fieldset>
+                        <fieldset class="color-17bca3">
+                            <input type="checkbox" id="a7" /><label for="a7">Other</label>
+                        </fieldset>
+                    </div>
+                    <div class="js-accordeon_head acenter back-gray">
+                        More <i class="arrow"></i>
+                    </div>
+                </form>
+            </section>
+            <section class="menu_filtr">
+                <h3 class="menu_filtr_title acenter">
+                    Locations
+                </h3>
+                <form class="js-accordeon">
+                    <div class="js-accordeon">
+                        <fieldset class="js-accordeon_head">
+                            <input type="radio" id="b1" name="cc" class="no-action" /><label for="b1" class="pull-left no-action"></label><i class="arrow pull-right"></i><span>Los Angeles</span>
+                        </fieldset>
+                        <div class="js-accordeon_body second-level">
+                            <fieldset>
+                                <input type="checkbox" id="e1" /><label for="e1">1562 W Pico Blvd</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e2" name="cc" /><label for="e2">3400 E 1st St...</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e3" name="cc" /><label for="e3">2405 South Ver...</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="js-accordeon">
+                        <fieldset class="js-accordeon_head">
+                            <input type="radio" id="b2" name="cc" class="no-action" /><label for="b2" class="pull-left no-action"></label><i class="arrow pull-right"></i><span>Chicago</span>
+                        </fieldset>
+                        <div class="js-accordeon_body second-level">
+                            <fieldset>
+                                <input type="checkbox" id="e1w" /><label for="e1w">1562 W Pico Blvd</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e2w" /><label for="e2w">3400 E 1st St...</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e3w" /><label for="e3w">2405 South Ver...</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="js-accordeon">
+                        <fieldset class="js-accordeon_head">
+                            <input type="radio" id="b3" name="cc" class="no-action" /><label for="b3" class="pull-left no-action"></label><i class="arrow pull-right"></i><span>Springfield</span>
+                        </fieldset>
+                        <div class="js-accordeon_body second-level">
+                            <fieldset>
+                                <input type="checkbox" id="e1q" /><label for="e1q">1562 W Pico Blvd</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e2q" /><label for="e2q">3400 E 1st Stewqe</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e3q" /><label for="e3q">2405 South Verewqe</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="js-accordeon">
+                        <fieldset class="js-accordeon_head">
+                            <input type="radio" id="b4" name="cc" class="no-action" /><label for="b4" class="pull-left no-action"></label><i class="arrow pull-right"></i><span>Lincoln</span>
+                        </fieldset>
+                        <div class="js-accordeon_body second-level">
+                            <fieldset>
+                                <input type="checkbox" id="e1f" /><label for="e1f">12 W Pico Blvd</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e2f" /><label for="e2f">3 Street text</label>
+                            </fieldset>
+                            <fieldset>
+                                <input type="checkbox" id="e3f" /><label for="e3f">05 South Versus</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div class="js-accordeon_body">
+                        <fieldset class="color-">
+                            <input type="radio" id="b5" name="cc" /><label for="b5">Paris</label>
+                        </fieldset>
+                        <fieldset class="color-">
+                            <input type="radio" id="b6" name="cc" /><label for="b6">London</label>
+                        </fieldset>
+                        <fieldset class="color-">
+                            <input type="radio" id="b7" name="cc" /><label for="b7">Moskow</label>
+                        </fieldset>
+                    </div>
+                    <div class="js-accordeon_head acenter back-gray">
+                        More <i class="arrow"></i>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+    <div id="content">
+        <div class="saving hidden"><i><img src="img/load.gif" alt="..." /></i>Saved...</div>
+        
+        <div class="schedule_toggle-view">
+            <span class="pull-right" data-type="day">Day</span>
+            <span class="pull-left active" data-type="week">Week</span>
+            <div class="schedule_toggle-view_rail_wrapper">
+                <div class="schedule_toggle-view_rail">
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="schedule_title">
+            <button class="date-control prev"></button>
+            Mar 30, 2015 — Apr 5, 2015
+            <button class="date-control next"></button>
+            <i class="ico_select-day radial-effect"></i>
+            <i class="ico_current-day radial-effect"></i>
+        </h2>
+        
+        <div class="schedule_wrapper" data-type="week">
+            <table class="schedule ds-1">
+                <thead>
+                    <tr>
+                        <th>Staff</th>
+                        <th>Mon 30</th>
+                        <th>Tue 31</th>
+                        <th>Wed 1</th>
+                        <th>Thu 2</th>
+                        <th>Fri 3</th>
+                        <th>Sat 4</th>
+                        <th>Sun 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="schedule_vacancy">
+                        <th>Open Shifts</th>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <p>16:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <p>16:00 — 20:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="schedule_person">
+                                <a href="#" class="schedule_person_link">
+                                    <i class="avatar"><img src="img/avatar/ava-1.jpg" alt="" /></i>
+                                    <strong>Peter</strong>
+                                    Carlsson
+                                </a>
+                                <p>0/40</p>
+                            </div>
+                        </th>
+                        <td></td>
+                        <td class="color-d98b8b">
+                            <div class="field-complete color-d98b8b">
+                                <p>4:00 — 16:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="color-e84a1d">
+                            <div class="field-complete color-e84a1d">
+                                <p>4:00 — 16:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="color-e84a1d">
+                            <div class="field-complete color-e84a1d">
+                                <p>8:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div>
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div>
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div>
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="schedule_person">
+                                <a href="#" class="schedule_person_link">
+                                    <i class="avatar"><img src="img/avatar/ava-2.jpg" alt="" /></i>
+                                    <strong>Aaron</strong>
+                                    Bennett
+                                </a>
+                                <p>22/40</p>
+                            </div>
+                        </th>
+                        <td>
+                            <div class="field-add">
+                                <button class="wave add-shift"></button>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="color-e84a1d">
+                            <div class="field-complete color-e84a1d">
+                                <p>8:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="color-e84a1d">
+                            <div class="field-complete color-e84a1d">
+                                <p>8:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="schedule_person">
+                                <a href="#" class="schedule_person_link">
+                                    <i class="avatar"><img src="img/avatar/ava-3.jpg" alt="" /></i>
+                                    <strong>John </strong>
+                                    Smith
+                                </a>
+                                <p>0/40</p>
+                            </div>
+                        </th>
+                        <td class="field-desired">
+                            <div>
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div>
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div>
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="color-8bb6cf">
+                            <div class="field-complete color-8bb6cf">
+                                <p>16:00 — 4:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="color-8bb6cf">
+                            <div class="field-complete color-8bb6cf">
+                                <p>16:00 — 4:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">
+                            <div class="schedule_person">
+                                <a href="#" class="schedule_person_link">
+                                    <i class="avatar"><img src="img/avatar/ava-0.jpg" alt="" /></i>
+                                    <strong>Peter</strong>
+                                    Parker
+                                </a>
+                                <p>29/40</p>
+                            </div>
+                        </th>
+                        <td class="color-0e8db0">
+                            <div class="field-complete color-0e8db0">
+                                <p>8:00 — 16:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td class="color-0e8db0">
+                            <div class="field-complete color-0e8db0">
+                                <p>8:00 — 16:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td class="color-0e8db0">
+                            <div class="field-complete color-0e8db0">
+                                <p>11:00 — 23:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="color-1c72a3">
+                            <div class="field-complete color-1c72a3">
+                                <p>16:00 — 4:00</p>
+                                <p>Cook</p>
+                            </div>
+                        </td>
+                        <td class="color-1c72a3">
+                            <div class="field-complete color-1c72a3">
+                                <p>16:00 — 4:00</p>
+                                <p>Cook</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="schedule_wrapper" data-type="day">
+            <table class="schedule ds-1 day-view">
+                <thead>
+                    <tr>
+                        <th>Staff</th>
+                        <th>1A</th>
+                        <th>2A</th>
+                        <th>3A</th>
+                        <th>4A</th>
+                        <th>5A</th>
+                        <th>6A</th>
+                        <th>7A</th>
+                        <th>8A</th>
+                        <th>9A</th>
+                        <th>10A</th>
+                        <th>11A</th>
+                        <th>12A</th>
+                        <th>1P</th>
+                        <th>2P</th>
+                        <th>3P</th>
+                        <th>4P</th>
+                        <th>5P</th>
+                        <th>6P</th>
+                        <th>7P</th>
+                        <th>8P</th>
+                        <th>9P</th>
+                        <th>10P</th>
+                        <th>11P</th>
+                        <th>12P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="schedule_vacancy">
+                        <th>Open Shifts</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <p>16:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td>
+                            <div>
+                                <p>16:00 — 20:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="schedule_person">
+                                <a href="#" class="schedule_person_link">
+                                    <i class="avatar"><img src="img/avatar/ava-2.jpg" alt="" /></i>
+                                    <strong>Aaron</strong>
+                                    Bennett
+                                </a>
+                                <p>22/40</p>
+                            </div>
+                        </th>
+                        <td class="color-0e8db0">
+                            <div class="field-complete color-0e8db0">
+                                <p>8:00 — 16:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td class="color-0e8db0">
+                            <div class="field-complete color-0e8db0">
+                                <p>8:00 — 16:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td class="color-0e8db0">
+                            <div class="field-complete color-0e8db0">
+                                <p>11:00 — 23:00</p>
+                                <p>Courier</p>
+                            </div>
+                        </td>
+                        <td class="color-e84a1d">
+                            <div class="field-complete color-e84a1d">
+                                <p>8:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="color-e84a1d">
+                            <div class="field-complete color-e84a1d">
+                                <p>8:00 — 20:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="field-desired">
+                            <div class="color-dadada">
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div class="color-dadada">
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td class="field-desired">
+                            <div class="color-dadada">
+                                <p>12:00 — 22:00</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td class="color-8bb6cf">
+                            <div class="field-complete color-8bb6cf">
+                                <p>16:00 — 4:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td class="color-8bb6cf">
+                            <div class="field-complete color-8bb6cf">
+                                <p>16:00 — 4:00</p>
+                                <p>Manager</p>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <footer>
+        <a href="#" class="pull-right">Developers</a>
+        Copyright © 2015 Company name Inc
+        <hr />
+        All Rights Reserved
+        <hr />
+        <a href="#">Terms of Service</a>
+        <hr />
+        <a href="#">Privacy Policy</a>
+    </footer>
+    
+    <form class="edit-work template">
+        <button class="edit-work_close pull-right"></button>
+        <h3>Assign Shift to John on Tue, Mar 31</h3>
+        <fieldset>
+            <label>Сhoose Shift Block</label>
+            <div class="select-wrapper" style="margin-left: 50px; min-width: 300px;">
+                <select id="sel">
+                    <option>8:00 — 20:00  Manager</option>
+                    <option>20:00 — 4:00  Manager</option>
+                </select>
+            </div>
+        </fieldset>
+        <p>Or create A Custom Shift</p>
+        <fieldset class="clearfix">
+            <div class="field-part pull-left smaller">
+                <label>Time</label>
+                <div class="input_wrapper with-ico">
+                    <i class="ico_time"></i>
+                    <input type="text" class="time-input" value="20:00">
+                </div>
+                <span class="mdash">&mdash;</span>
+                <div class="input_wrapper with-ico">
+                    <i class="ico_time"></i>
+                    <input type="text" class="time-input" value="8:00">
+                </div>
+            </div>
+            <div class="field-part pull-left smaller">
+                <label>Unpaid Break</label>
+                <div class="input_wrapper with-ico pull-left">
+                    <i class="ico_time"></i>
+                    <input type="text" class="time-input" value="i.e. 1 hr">
+                </div>
+            </div>
+            <div class="field-part pull-left smaller">
+                <label>Position</label>
+                <div class="select-wrapper">
+                    <select>
+                        <option>Manager</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-part smaller">
+                <label>Location</label>
+                <div class="select-wrapper">
+                    <select>
+                        <option>Los Angeles</option>
+                        <option>Oklahoma</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="actions">
+            <button class="pull-right button-blue wave">Create & Publish</button>
+            <button class="pull-right button-blue wave">Create </button>
+            <input type="checkbox" value="" id="chee" /><label for="chee">Save As Shift Block</label>
+        </fieldset>
+    </form>
+</body>
+</html>
+
+

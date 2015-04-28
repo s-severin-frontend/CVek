@@ -154,6 +154,183 @@ function c(obj) {
     }
     $(document).on('click', '.ico_change-name', changeName);
     
+    //Аккордион
+    function accordeon(self){
+        var acc_block = self.parent('.js-accordeon'),
+            acc_body = acc_block.children('.js-accordeon_body');
+        var list = acc_body.children().get();
+        if( !self.hasClass('active') ){
+            $.each($(list), function (i, el) {
+                setTimeout(function() {
+                    $(el).css({'display': 'block'}).stop().animate({
+                        'max-height': 10000,
+                        'opacity': 1
+                    }, 350);
+                }, 30 + (i * 150));
+            });
+            acc_block.addClass('active');
+            acc_body.addClass('active');
+            self.addClass('active');
+        }else{
+            $.each($(list.reverse()), function (i, el) {
+                setTimeout(function() {
+                    $(el).stop().animate({
+                        'max-height': 0,
+                        'opacity': 0
+                    }, 200, function(){ $(el).css({'display': 'none'}) });
+                }, 10 + (i * 100));
+            });
+            acc_block.removeClass('active');
+            acc_body.removeClass('active');
+            self.removeClass('active');
+        }
+        return false;
+    };
+    
+    $(document).on('click', '.js-accordeon_head', function(e){
+        if ($(e.target).closest( $(".no-action") ).length == 0) {
+            accordeon( $(this) );
+        }
+    });
+    
+    $(document).on('click', '.check-all', function(e){
+        var $this = $(this),
+            $checkList = $this.parents('.check-list');
+        $checkList.find('[type="checkbox"]').each(function(){
+            $(this).prop('checked', true);
+        });
+    });
+    
+    $(document).on('click', '.menu-toggle', function(e){
+        $(this).toggleClass('active');
+        $(".menu").toggleClass('active');
+    });
+    
+    function addShift(el){
+        var heightPopup = 345;
+        var $td = el.parents('td');
+        var td_heihgt = $td.height();
+        $td.animate({
+            'height': heightPopup
+        },600);
+        var $first_td = el.parents('tr').find('td');
+        var $last_td = el.parents('tr').find('td').last();
+        var new_coord = [];
+        new_coord.top = $first_td.position().top,
+        new_coord.left = $first_td.position().left,
+        new_coord.right = $last_td.position().left + $last_td.outerWidth(true),
+        new_coord.bottom = new_coord.top + heightPopup;
+        var $curr_td = el.parents('td');
+        var old_coord = [];
+        old_coord.top = $curr_td.position().top,
+        old_coord.left = $curr_td.position().left,
+        old_coord.right = $curr_td.position().left + $curr_td.outerWidth(true),
+        old_coord.bottom = old_coord.top + $curr_td.outerHeight(true);
+        var $tamplate = $(".edit-work");
+        $tamplate.find('select').each(function(){
+            $(this).select2('destroy');
+        });
+        var $popup = $tamplate.clone();
+        $popup.appendTo($curr_td)
+                .removeClass("template")
+                .css({
+                    'top': old_coord.top,
+                    'left': old_coord.left,
+                    'width': old_coord.right - old_coord.left,
+                    'height': old_coord.bottom - old_coord.top
+                })
+                .animate({
+                    'opacity': 1
+                }, 200)
+                .animate({
+                    'top': new_coord.top,
+                    'left': new_coord.left,
+                    'width': new_coord.right - new_coord.left,
+                    'height': new_coord.bottom - new_coord.top
+                }, 600,function(){
+                    
+                });
+        $popup.find('select').each(function(){
+            select($("select"));
+        });
+        $(document).on('click', '.edit-work_close', function(){
+            $popup.fadeOut(200, function(){
+                $popup.remove();
+            });
+            $td.animate({
+                    'height': td_heihgt
+                }, 200);
+            return false;
+        });
+    }
+    
+    $(document).on('click', '.add-shift', function(){ addShift($(this)); });
+    
+    function select(el){
+        el.select2({
+                minimumResultsForSearch: 15
+            }); 
+    }
+    
+    function scheduleToggle(){
+        $('.schedule_toggle-view_rail').slider({
+            min: 1,
+            max: 2,
+            range: "min",
+            value: 1,
+            slide: function(event, ui) {
+                $('.schedule_toggle-view span').removeClass('active');
+                switch (ui.value) {
+                    case 1:
+                        $('.schedule_toggle-view .pull-left').addClass('active');
+                        toggleCalendar('week');
+                        break;
+                    case 2:
+                        $('.schedule_toggle-view .pull-right').addClass('active');
+                        toggleCalendar('day');
+                        break;
+                    default:
+                        return false;
+                }
+            }
+        }); 
+    }
+    function toggleCalendar(type){
+        switch (type) {
+                    case "day":
+                        $('.schedule_wrapper[data-type="week"]').fadeOut(100, function(){
+                            $('.schedule_wrapper[data-type="day"]').fadeIn(300);
+                        });
+                        break;
+                    case 'week':
+                        $('.schedule_wrapper[data-type="day"]').fadeOut(100, function(){
+                            $('.schedule_wrapper[data-type="week"]').fadeIn(300);
+                        });
+                        break;
+                    default:
+                        return false;
+                }
+        c(type);
+    }
+    
+    $(document).on('click', '.schedule_toggle-view span', function() {
+            $('.schedule_toggle-view span').removeClass('active');
+            $(this).addClass('active');
+            var type = $(this).attr('data-type'),
+                $slider = $('.schedule_toggle-view_rail');
+            switch (type) {
+                case "day":
+                    $slider.slider("value", 2);
+                    break;
+                case "week":
+                    $slider.slider("value", 1);
+                    break;
+                default:
+                    return false;
+            }
+            toggleCalendar( type );
+        });
+    
     
     $(document).ready(function() {
         //Move pointer navigate
@@ -171,12 +348,22 @@ function c(obj) {
         staticPopup();
         
         $("select").each(function(){
-            $(this).select2({
-                minimumResultsForSearch: 15
-            });
+            select( $(this) );
         });
         
+        Waves.attach('.input_wrapper');
+        Waves.attach('.js-accordeon_head');
+        Waves.attach('.wave');
+        Waves.init();
         
+        if( $('.schedule_toggle-view_rail').size() > 0 ) scheduleToggle();
+        
+        
+        
+    });
+    
+    $(window).load(function() {
+        $(".menu_wrapper").mCustomScrollbar();
     });
 
 })(this);
