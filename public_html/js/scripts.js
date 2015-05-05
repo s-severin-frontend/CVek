@@ -187,6 +187,24 @@ function c(obj) {
         return false;
     };
     
+    $(document).on('click', '.city-filtr-inside', function(e){
+        var $this = $(this);
+        $('.city-filtr-inside.current').removeClass('current');
+        $this.addClass('current').find("[type='radio']").prop({'checked': true}).change();
+    });
+    
+    $(document).on('change', '.city-filtr-inside [type="radio"]', function(e){
+        var $this = $(this),
+            check = $this.prop('checked'),
+            $checkboxes = $this.parents('.city-filtr-inside').parent('.js-accordeon').find("[type='checkbox']");
+        if ( check ) {
+            $checkboxes.prop({'checked': true});
+            $('.city-filtr-inside:not(.current)').parent('.js-accordeon').find("[type='checkbox']").prop({'checked': false});
+        }else{
+            $checkboxes.prop({'checked': false});
+        }
+    });
+    
     $(document).on('click', '.js-accordeon_head', function(e){
         if ($(e.target).closest( $(".no-action") ).length == 0) {
             accordeon( $(this) );
@@ -253,7 +271,7 @@ function c(obj) {
         $popup.find('select').each(function(){
             select($("select"));
         });
-        $(document).on('click', '.edit-work_close', function(){
+        function closeShift(){
             $popup.fadeOut(200, function(){
                 $popup.remove();
             });
@@ -261,7 +279,23 @@ function c(obj) {
                     'height': td_heihgt
                 }, 200);
             return false;
+        }
+        $(document).on('click', '.edit-work_close', function(){
+            closeShift();
         });
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) closeShift();
+        });
+        function resizeShift(){
+            new_coord.right = $last_td.position().left + $last_td.outerWidth(true);
+            old_coord.right = $curr_td.position().left + $curr_td.outerWidth(true);
+            $popup.animate({
+                    'width': new_coord.right - new_coord.left
+                }, 50);
+        }
+        $(window).resize(function() {
+            resizeShift();
+        }).resize();
     }
     
     $(document).on('click', '.add-shift', function(){ addShift($(this)); });
@@ -310,7 +344,6 @@ function c(obj) {
                     default:
                         return false;
                 }
-        c(type);
     }
     
     $(document).on('click', '.schedule_toggle-view span', function() {

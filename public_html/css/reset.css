@@ -188,7 +188,7 @@ body {
   -webkit-text-size-adjust: 100%;
   min-height: 100%;
   background: #eceff1;
-  font-weight: 100; }
+  font-weight: 300; }
 
 a {
   color: #69c0f5;
@@ -203,22 +203,22 @@ a {
 
 p {
   margin: 15px 0;
-  font-weight: 100; }
+  font-weight: 300; }
 
 h1 {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 38px;
   line-height: 100%;
   margin: 0; }
 
 h2 {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 36px;
   line-height: 150%;
   margin: 0; }
 
 h3 {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 24px;
   line-height: 120%;
   margin: 0; }
@@ -263,7 +263,7 @@ textarea {
     color: #222;
     font-size: 18px;
     line-height: 46px;
-    font-weight: 100;
+    font-weight: 300;
     height: 43px;
     display: inline-block;
     position: relative;
@@ -274,7 +274,7 @@ textarea {
     color: #b8b8b8;
     font-size: 18px;
     line-height: 45px;
-    font-weight: 100;
+    font-weight: 300;
     height: 43px;
     display: block;
     position: absolute;

@@ -474,7 +474,7 @@ footer {
   background: #cfd8dc;
   color: #727272;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 25px;
   padding: 35px 20px 35px 110px; }
   footer hr {
@@ -501,7 +501,7 @@ footer {
   position: absolute;
   top: 100px;
   right: 20px;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 18px;
   line-height: 34px;
   color: #727272; }
@@ -560,7 +560,7 @@ footer {
     font-size: 24px;
     line-height: 36px;
     color: #222;
-    font-weight: 100;
+    font-weight: 300;
     margin: 3px 0 25px; }
 
 .popup-open {
@@ -712,7 +712,7 @@ input[type="radio"] {
   border: none;
   outline: none;
   box-shadow: none;
-  font-weight: 100;
+  font-weight: 300;
   padding: 0;
   height: 54px;
   display: inline-block;
@@ -758,7 +758,7 @@ input[type="radio"] {
     text-align: left;
     vertical-align: top;
     padding: 9px;
-    font-weight: 100; }
+    font-weight: 300; }
   .profile_body_alerts th {
     padding-left: 0;
     min-width: 200px; }
@@ -862,7 +862,7 @@ input[type="radio"] {
 
 .menu {
   position: fixed;
-  padding: 110px 35px 50px 110px;
+  padding: 130px 35px 50px 110px;
   background: #b0bec5;
   width: 295px;
   height: 100%;
@@ -879,7 +879,7 @@ input[type="radio"] {
     transition: padding, 0.2s, ease-out; }
   .menu.active {
     left: 0;
-    padding: 110px 23px 50px 110px; }
+    padding: 130px 0 50px 80px; }
     .menu.active ~ #content, .menu.active ~ footer {
       padding-left: 325px; }
 
@@ -937,10 +937,7 @@ input[type="radio"] {
 
 .menu_filtr {
   margin: 30px 0;
-  background: #eceff1;
-  border: 1px solid #dadada;
-  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05);
-  color: #727272;
+  color: #222;
   -webkit-transition: margin, 0.3s, ease-out;
   -o-transition: margin, 0.3s, ease-out;
   transition: margin, 0.3s, ease-out; }
@@ -949,9 +946,8 @@ input[type="radio"] {
   .menu_filtr + .menu_filtr {
     margin-top: 60px; }
   .menu_filtr fieldset {
-    border: 1px solid #dadada;
     border-style: solid none;
-    padding: 3px 15px;
+    padding: 4px 15px 4px 45px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
@@ -960,8 +956,8 @@ input[type="radio"] {
       min-width: 1px; }
   .menu_filtr .js-accordeon_head {
     display: block;
-    color: #727272;
-    padding: 4px 15px;
+    color: #222;
+    padding: 4px 15px 4px 45px;
     cursor: pointer; }
     .menu_filtr .js-accordeon_head .arrow {
       display: inline-block;
@@ -969,7 +965,7 @@ input[type="radio"] {
       width: 0;
       height: 0;
       border: transparent solid 5px;
-      border-color: #a3a6a7 transparent transparent;
+      border-color: #636a6d transparent transparent;
       border-style: solid solid none;
       margin: 0 0 0 5px; }
       .menu_filtr .js-accordeon_head .arrow.pull-right {
@@ -978,7 +974,9 @@ input[type="radio"] {
 .second-level {
   font-size: 14px; }
   .second-level fieldset {
-    padding-left: 23px; }
+    padding-left: 55px; }
+  .second-level input:checked + label:before {
+    border-color: #474b4d; }
 
 .back-gray {
   background: #dde3e6; }
@@ -990,18 +988,16 @@ input[type="radio"] {
   margin-bottom: 0; }
 
 .menu_filtr_title {
-  background: #dde3e6;
-  padding: 8px 15px;
+  padding: 10px 20px 10px 30px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   position: relative;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 30px; }
   .menu_filtr_title .check-all {
     float: right;
     margin: -8px -15px -8px 0;
-    border-left: 1px solid #dadada;
     padding: 8px 15px;
     cursor: pointer; }
 
@@ -1048,7 +1044,7 @@ input[type="radio"] {
     text-align: left;
     vertical-align: top; }
   .schedule th {
-    font-weight: 100;
+    font-weight: 300;
     border: 1px solid #dadada; }
     .schedule th:first-child {
       width: 145px; }
@@ -1102,13 +1098,13 @@ input[type="radio"] {
   border: none;
   color: #222;
   font-size: 14px;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 18px;
   display: inline-block; }
   .schedule_person_link strong {
     font-size: 18px;
     line-height: 20px;
-    font-weight: 100;
+    font-weight: 300;
     display: block; }
   .schedule_person_link i {
     display: block;
@@ -1351,7 +1347,7 @@ input[type="radio"] {
   color: #fff;
   display: inline-block;
   vertical-align: middle;
-  font-weight: 100;
+  font-weight: 300;
   box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05); }
 
 .day-view td {

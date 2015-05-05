@@ -147,7 +147,7 @@ footer{
     background: #cfd8dc;
     color: #727272;
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 300;
     line-height: 25px;
     padding: 35px 20px 35px 110px;
     hr{
@@ -176,7 +176,7 @@ footer{
     position: absolute;
     top: 100px;
     right: 20px;
-    font-weight: 100;
+    font-weight: 300;
     font-size: 18px;
     line-height: 34px;
     color: #727272;
@@ -234,7 +234,7 @@ footer{
         font-size: 24px;
         line-height: 36px;
         color: #222;
-        font-weight: 100;
+        font-weight: 300;
         margin: 3px 0 25px;
     }
 }
@@ -387,7 +387,7 @@ input[type="radio"]{
     border: none;
     outline: none;
     box-shadow: none;
-    font-weight: 100;
+    font-weight: 300;
     padding: 0;
     height: 54px;
     display: inline-block;
@@ -446,7 +446,7 @@ $column_space: 95px;
         text-align: left;
         vertical-align: top;
         padding: 9px;
-        font-weight: 100;
+        font-weight: 300;
     }
     th{
         padding-left: 0;
@@ -559,7 +559,7 @@ $column_space: 95px;
 
 .menu{
     position: fixed;
-    padding: 110px 35px 50px 110px;
+    padding: 130px 35px 50px 110px;
     background: #b0bec5;
     width: 295px;
     height: 100%;
@@ -573,7 +573,7 @@ $column_space: 95px;
     }
     &.active{
         left: 0;
-        padding: 110px 23px 50px 110px;
+        padding: 130px 0 50px 80px;
         & ~ #content, & ~ footer{
             padding-left: 325px;
         }
@@ -628,10 +628,7 @@ $column_space: 95px;
 }
 .menu_filtr{
     margin: 30px 0;
-    background: #eceff1;
-    border: 1px solid #dadada;
-    @include drop-shadow(1);
-    color: #727272;
+    color: #222;
     @include transition(margin, .3s, ease-out);
     input[type="checkbox"], input[type="radio"]{
         & + label{
@@ -642,9 +639,8 @@ $column_space: 95px;
         margin-top: 60px;
     }
     fieldset{
-        border: 1px solid #dadada;
         border-style: solid none;
-        padding: 3px 15px;
+        padding: 4px 15px 4px 45px;
         @include text-overflow();
         label{
             min-height: 30px;
@@ -654,15 +650,15 @@ $column_space: 95px;
     }
     .js-accordeon_head{
         display: block;
-        color: #727272;
-        padding: 4px 15px;
+        color: #222;
+        padding: 4px 15px 4px 45px;
         cursor: pointer;
         .arrow{
             display: inline-block;
             vertical-align: middle;
             @include square(0);
             border: transparent solid 5px;
-            border-color: #a3a6a7 transparent transparent;
+            border-color: #636a6d transparent transparent;
             border-style: solid solid none;
             margin: 0 0 0 5px;
             &.pull-right{
@@ -675,7 +671,10 @@ $column_space: 95px;
 .second-level{
     font-size: 14px;
     fieldset{
-        padding-left: 23px;
+        padding-left: 55px;
+    }
+    input:checked + label:before{
+          border-color: #474b4d;
     }
 }
 
@@ -691,16 +690,14 @@ $column_space: 95px;
 }
 
 .menu_filtr_title {
-    background: #dde3e6;
-    padding: 8px 15px;
+    padding: 10px 20px 10px 30px;
     @include text-overflow();
     position: relative;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 30px;
     .check-all{
         float: right;
         margin: -8px -15px -8px 0;
-        border-left: 1px solid #dadada;
         padding: 8px 15px;
         cursor: pointer;
     }
@@ -756,7 +753,7 @@ $column_space: 95px;
         vertical-align: top;
     }
     th{
-        font-weight: 100;
+        font-weight: 300;
         border: 1px solid #dadada;
         &:first-child{
             width: 145px;
@@ -823,13 +820,13 @@ $column_space: 95px;
     border: none;
     color: #222;;
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 300;
     line-height: 18px;
     display: inline-block;
     strong{
         font-size: 18px;
         line-height: 20px;
-        font-weight: 100;
+        font-weight: 300;
         display: block;
     }
     i{
@@ -1087,7 +1084,7 @@ $column_space: 95px;
     color: #fff;
     display: inline-block;
     vertical-align: middle;
-    font-weight: 100;
+    font-weight: 300;
     @include drop-shadow(1);
 }
 
