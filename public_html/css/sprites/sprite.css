@@ -51,6 +51,9 @@
   [class^=ico_].ico_current-day {
     background-position: -32px -47px;
     border-radius: 0; }
+  [class^=ico_].ico_geoposition {
+    background-position: 0 -213px;
+    border-radius: 0; }
 
 .profile_body_social-checkbox .social-fb {
   background-position: -1px 0; }

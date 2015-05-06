@@ -271,6 +271,9 @@ function c(obj) {
         $popup.find('select').each(function(){
             select($("select"));
         });
+        $(document).off("mouseenter", '[data-type="week"] td');
+        $(document).off("mouseleave", '[data-type="week"] td');
+
         function closeShift(){
             $popup.fadeOut(200, function(){
                 $popup.remove();
@@ -278,10 +281,14 @@ function c(obj) {
             $td.animate({
                     'height': td_heihgt
                 }, 200);
+            //jQuery(document).on("click.myevent", ".SearchableCol", nwcsClickFunc);    
+            $(document).on("mouseenter", '[data-type="week"] td', function(){ actionCell( $(this) ); } );
+            $(document).on("mouseleave", '[data-type="week"] td', function(){ revertCell( $(this) ); } );
             return false;
         }
         $(document).on('click', '.edit-work_close', function(){
             closeShift();
+            return false;
         });
         $(document).keyup(function(e) {
             if (e.keyCode == 27) closeShift();
@@ -298,7 +305,7 @@ function c(obj) {
         }).resize();
     }
     
-    $(document).on('click', '.add-shift', function(){ addShift($(this)); });
+    $(document).on('click', '.add-shift, .edit-shift', function(){ addShift($(this)); });
     
     function select(el){
         el.select2({
@@ -364,6 +371,51 @@ function c(obj) {
             toggleCalendar( type );
         });
     
+    function actionCell(cell){
+        if( cell.parents('.schedule_vacancy').size() > 0 ) return false;
+        if( !cell.children().size() > 0 ){
+            cell.append('<button class="wave add-shift"></button>');
+        }else{
+            cell.children().addClass('hidden');
+            cell.append('<button class="wave add-shift"></button><button class="wave edit-shift"></button><button class="wave remove-shift"></button>');
+        }
+        var cell_styling = {
+            "text-align": "center",
+            "vertical-align": "middle",
+            "background": "#03a9f4"
+        };
+        cell.css(cell_styling);
+    }
+    function revertCell(cell){
+        var cell_styling = {
+            "text-align": "left",
+            "vertical-align": "top",
+            "background": ""
+        }
+        cell.css(cell_styling);
+        cell.find('.add-shift, .edit-shift, .remove-shift').remove();
+        cell.find('.hidden').removeClass('hidden');
+    }
+    $(document).on('mouseenter', '[data-type="week"] td', function(){
+        actionCell( $(this) );
+    });
+    $(document).on('mouseleave', '[data-type="week"] td', function(){
+        revertCell( $(this) );
+    });
+    
+    function removeCell(cell){
+        c('remove');
+        cell.children().remove();
+        var cell_styling = {
+            "text-align": "left",
+            "vertical-align": "top",
+            "background": ""
+        }
+        cell.css(cell_styling).removeClass();
+    }
+    $(document).on('click', '.remove-shift', function(){
+        removeCell( $(this).parents('td') );
+    });
     
     $(document).ready(function() {
         //Move pointer navigate
