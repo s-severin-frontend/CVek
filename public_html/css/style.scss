@@ -1186,6 +1186,7 @@ $column_space: 95px;
 
 .company_header{
     padding: 63px 0 0 145px;
+    margin-bottom: 40px;
     h2{
         color: #607d8b;
     }
@@ -1194,21 +1195,19 @@ $column_space: 95px;
     float: left;
     position: relative;
     margin: -36px 23px 0 -145px;
-    @include square(122px);
+    @include size(127px, 125px);
     overflow: hidden;
-    border-radius: 50%;
     img{
         display: block;
-        @include square(122px);
+        @include size(127px, 125px);
         overflow: hidden;
-        border-radius: 50%;
     }
     input[type="file"]{
         position: absolute;
         top: 0;
         left: 0;
-        min-height: 122px;
-        min-width: 122px;
+        min-height: 125px;
+        min-width: 127px;
         z-index: 2;
         opacity: 0;
         cursor: pointer;
@@ -1237,14 +1236,105 @@ $column_space: 95px;
     vertical-align: baseline;
     line-height: 54px;
 }
-
-
-
-
-
-
-
-
+.company_locations h3{
+    font-size: 30px;
+    color: #607d8b;
+    margin: 28px 0;
+}
+.company_locations_table{
+    width: 100%;
+    background: #fff;
+    @include drop-shadow(1);
+    th, td{
+        text-align: left;
+        min-width: 90px;
+        &:first-child{
+            width: 80%;
+        }
+    }
+    td ~ td, th ~ th{
+        text-align: center;
+    }
+    th{
+        vertical-align: middle;
+        background: #e9ecee;
+        padding: 5px 20px;
+        font-weight: 300;
+        font-size: 14px;
+        color: #727272;
+        line-height: 18px;
+    }
+    td{
+        color: #727272;
+        font-size: 18px;
+        line-height: 24px;
+        border-top: 1px solid #dadada;
+    }
+}
+.company_locations_city td{
+    padding: 35px 20px;
+}
+.company_locations_child{
+    padding: 10px 35px;
+    border-top: none !important;
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0 15px;
+        li{
+            display: block;
+            font-size: 16px;
+            line-height: 18px;
+            margin: 10px 0;
+        }
+    }
+}
+.company_locations_child_action i{
+    margin: 0 3px;
+}
+.company_locations_child_address{
+    color: #727272;
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover, &.active{
+        color: #69c0f6;
+    }
+    & ~ .ico_small-pointer{
+        margin-left: 5px;
+        display: none;
+        opacity: 0;
+        @include transition(opacity, .2s, ease);
+    }
+    &:hover ~ .ico_small-pointer, &.active ~ .ico_small-pointer{
+        display: inline-block;
+        opacity: 1;
+    }
+}
+.company_map-wrapper{
+    position: relative;
+    .company_show-map{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        @include square(0);
+        border-color:  #dadada transparent transparent;
+        border-width: 17px 15px 0;
+        border-style: solid solid none;
+        margin-left: -15px;
+        cursor: pointer;
+        z-index: 3;
+    }
+    &.active .company_show-map{
+        border-color: transparent transparent #607d8b;
+        border-width: 0 15px 17px;
+        border-style: none solid solid;
+        top: auto;
+        bottom: 0;
+    }
+}
+.company_map{
+    @include size(100%, 225px);
+}
 
 
 

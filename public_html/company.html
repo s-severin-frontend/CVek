@@ -13,6 +13,7 @@
 
     <script type="text/javascript" src="js/modernizr.custom.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=ru"></script>
     <script type="text/javascript" src="js/select2.js"></script>
     <script type="text/javascript" src="js/waves.js"></script>
     <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -80,7 +81,88 @@
                 <div>
                     <h3>Locations</h3>
                     <div>
-                        
+                        <table class="company_locations_table">
+                            <thead>
+                                <tr>
+                                    <th>Location</th>
+                                    <th>Employee</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="js-accordeon">
+                                <tr class="company_locations_city">
+                                    <td><span class="js-accordeon_head away-parent">Los Angeles (3)</span></td>
+                                    <td>20</td>
+                                    <td><i class="ico_change-gray radial-effect"></i></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="company_locations_child">
+                                        <ul>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address">3601 E Colorado Blvd, Pasadena</span><i class="ico_small-pointer"></i>
+                                            </li>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address">3400 E 1st St</span><i class="ico_small-pointer"></i>
+                                            </li>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address">2405 South Vermont Avenu</span><i class="ico_small-pointer"></i>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="company_map-wrapper">
+                                            <i class="company_show-map"></i>
+                                            <div class="company_map" id="map"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+<!--                            <tbody class="js-accordeon">
+                                <tr>
+                                    <td><span class="js-accordeon_head away-parent">Los Angeles (3)</span></td>
+                                    <td>20</td>
+                                    <td><i class="ico_change-gray radial-effect"></i></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="company_locations_child">
+                                        <ul>
+                                            <li>
+                                                <div class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray radial-effect"></i>
+                                                    <i class="ico_edit-gray radial-effect"></i>
+                                                </div>
+                                                <span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>-->
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
                     </div>
                     
 

@@ -122,6 +122,26 @@
   [class^=ico_].ico_geoposition {
     background-position: 0 -213px;
     border-radius: 0; }
+  [class^=ico_].ico_remove-gray, [class^=ico_].ico_edit-gray {
+    width: 21px;
+    height: 21px;
+    border-radius: 0;
+    cursor: pointer; }
+  [class^=ico_].ico_remove-gray {
+    background-position: -5px -249px; }
+    [class^=ico_].ico_remove-gray:hover {
+      background-position: -35px -249px; }
+  [class^=ico_].ico_change-gray {
+    background-position: -1px -272px; }
+  [class^=ico_].ico_edit-gray {
+    background-position: -5px -276px; }
+    [class^=ico_].ico_edit-gray:hover {
+      background-position: -35px -276px; }
+  [class^=ico_].ico_small-pointer {
+    width: 16px;
+    height: 16px;
+    background-position: -3px -302px;
+    border-radius: 0; }
 
 .profile_body_social-checkbox .social-fb {
   background-position: -1px 0; }
@@ -1583,7 +1603,8 @@ input[type="radio"] {
         background: #687e8a; }
 
 .company_header {
-  padding: 63px 0 0 145px; }
+  padding: 63px 0 0 145px;
+  margin-bottom: 40px; }
   .company_header h2 {
     color: #607d8b; }
 
@@ -1591,22 +1612,20 @@ input[type="radio"] {
   float: left;
   position: relative;
   margin: -36px 23px 0 -145px;
-  width: 122px;
-  height: 122px;
-  overflow: hidden;
-  border-radius: 50%; }
+  width: 127px;
+  height: 125px;
+  overflow: hidden; }
   .company_header_avatar img {
     display: block;
-    width: 122px;
-    height: 122px;
-    overflow: hidden;
-    border-radius: 50%; }
+    width: 127px;
+    height: 125px;
+    overflow: hidden; }
   .company_header_avatar input[type="file"] {
     position: absolute;
     top: 0;
     left: 0;
-    min-height: 122px;
-    min-width: 122px;
+    min-height: 125px;
+    min-width: 127px;
     z-index: 2;
     opacity: 0;
     cursor: pointer; }
@@ -1632,6 +1651,97 @@ input[type="radio"] {
   display: inline-block;
   vertical-align: baseline;
   line-height: 54px; }
+
+.company_locations h3 {
+  font-size: 30px;
+  color: #607d8b;
+  margin: 28px 0; }
+
+.company_locations_table {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.24), 0 3px 8px rgba(0, 0, 0, 0.05); }
+  .company_locations_table th, .company_locations_table td {
+    text-align: left;
+    min-width: 90px; }
+    .company_locations_table th:first-child, .company_locations_table td:first-child {
+      width: 80%; }
+  .company_locations_table td ~ td, .company_locations_table th ~ th {
+    text-align: center; }
+  .company_locations_table th {
+    vertical-align: middle;
+    background: #e9ecee;
+    padding: 5px 20px;
+    font-weight: 300;
+    font-size: 14px;
+    color: #727272;
+    line-height: 18px; }
+  .company_locations_table td {
+    color: #727272;
+    font-size: 18px;
+    line-height: 24px;
+    border-top: 1px solid #dadada; }
+
+.company_locations_city td {
+  padding: 35px 20px; }
+
+.company_locations_child {
+  padding: 10px 35px;
+  border-top: none !important; }
+  .company_locations_child ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 15px; }
+    .company_locations_child ul li {
+      display: block;
+      font-size: 16px;
+      line-height: 18px;
+      margin: 10px 0; }
+
+.company_locations_child_action i {
+  margin: 0 3px; }
+
+.company_locations_child_address {
+  color: #727272;
+  cursor: pointer;
+  text-decoration: underline; }
+  .company_locations_child_address:hover, .company_locations_child_address.active {
+    color: #69c0f6; }
+  .company_locations_child_address ~ .ico_small-pointer {
+    margin-left: 5px;
+    display: none;
+    opacity: 0;
+    -webkit-transition: opacity, 0.2s, ease;
+    -o-transition: opacity, 0.2s, ease;
+    transition: opacity, 0.2s, ease; }
+  .company_locations_child_address:hover ~ .ico_small-pointer, .company_locations_child_address.active ~ .ico_small-pointer {
+    display: inline-block;
+    opacity: 1; }
+
+.company_map-wrapper {
+  position: relative; }
+  .company_map-wrapper .company_show-map {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-color: #dadada transparent transparent;
+    border-width: 17px 15px 0;
+    border-style: solid solid none;
+    margin-left: -15px;
+    cursor: pointer;
+    z-index: 3; }
+  .company_map-wrapper.active .company_show-map {
+    border-color: transparent transparent #607d8b;
+    border-width: 0 15px 17px;
+    border-style: none solid solid;
+    top: auto;
+    bottom: 0; }
+
+.company_map {
+  width: 100%;
+  height: 225px; }
 
 /*nav, .menu{display: none;}*/
 

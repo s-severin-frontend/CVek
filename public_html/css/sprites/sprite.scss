@@ -1,3 +1,4 @@
+@import "../mixins/mixins";
 .nav_punkt_schedule i{
     background-position: -15px -19px;
 }
@@ -53,6 +54,31 @@
     }
     &.ico_geoposition{
         background-position: 0 -213px;
+        border-radius: 0;
+    }
+    &.ico_remove-gray, &.ico_edit-gray{
+        @include square(21px);
+        border-radius: 0;
+        cursor: pointer;
+    }
+    &.ico_remove-gray{
+        background-position: -5px -249px;
+        &:hover{
+            background-position: -35px -249px;
+        }
+    }
+    &.ico_change-gray{
+        background-position: -1px -272px;
+    }
+    &.ico_edit-gray{
+        background-position: -5px -276px;
+        &:hover{
+            background-position: -35px -276px;
+        }
+    }
+    &.ico_small-pointer{
+        @include square(16px);
+        background-position: -3px -302px;
         border-radius: 0;
     }
 }

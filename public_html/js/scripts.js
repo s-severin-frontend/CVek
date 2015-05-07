@@ -417,6 +417,8 @@ function c(obj) {
         removeCell( $(this).parents('td') );
     });
     
+    
+    
     $(document).ready(function() {
         //Move pointer navigate
         $("nav").size() > 0 ? navigate() : false;
@@ -443,7 +445,55 @@ function c(obj) {
         
         if( $('.schedule_toggle-view_rail').size() > 0 ) scheduleToggle();
         
-        
+        //Карта
+    if ($('#map').size() > 0) {
+        function init() {
+            var mapOptions = {
+                zoom: 16,
+                scrollwheel: false,
+                center: new google.maps.LatLng(53.945550, 27.682683),
+                styles: [{featureType: 'water', stylers: [{color: '#46bcec'}, {visibility: 'on'}]}, {featureType: 'landscape', stylers: [{color: '#f2f2f2'}]}, {featureType: 'road', stylers: [{saturation: -100}, {lightness: 45}]}, {featureType: 'road.highway', stylers: [{visibility: 'simplified'}]}, {featureType: 'road.arterial', elementType: 'labels.icon', stylers: [{visibility: 'off'}]}, {featureType: 'administrative', elementType: 'labels.text.fill', stylers: [{color: '#444444'}]}, {featureType: 'transit', stylers: [{visibility: 'off'}]}, {featureType: 'poi', stylers: [{visibility: 'off'}]}]
+            };
+            var mapElement = document.getElementById('map');
+            var map = new google.maps.Map(mapElement, mapOptions);
+            setMarkers(map, offses_one);
+        }
+
+        var offses_one = [
+            ['Office', 53.945550, 27.682683, 1]
+        ];
+
+        var markers = [];
+        var infowindows = [];
+        function setMarkers(map, locations) {
+            var image = new google.maps.MarkerImage('img/pointer.png',
+                    new google.maps.Size(69, 50),
+                    new google.maps.Point(1, 0),
+                    new google.maps.Point(0, 55));
+            var shape = {
+                coord: [1, 1, 1, 55, 55, 55, 55, 1],
+                type: 'poly'
+            };
+            for (var i = 0; i < locations.length; i++) {
+                var office = locations[i];
+                var myLatLng = new google.maps.LatLng(office[1], office[2]);
+                markers[i] = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    icon: image,
+                    shape: shape,
+                    title: office[0],
+                    zIndex: office[3],
+                });
+                google.maps.event.addListener(markers[i], 'click', function(innerKey) {
+                    return function() {
+                        infowindows[innerKey].open(map, markers[innerKey]);
+                    };
+                }(i));
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', init);
+    }   
         
     });
     

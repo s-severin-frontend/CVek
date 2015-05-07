@@ -54,6 +54,26 @@
   [class^=ico_].ico_geoposition {
     background-position: 0 -213px;
     border-radius: 0; }
+  [class^=ico_].ico_remove-gray, [class^=ico_].ico_edit-gray {
+    width: 21px;
+    height: 21px;
+    border-radius: 0;
+    cursor: pointer; }
+  [class^=ico_].ico_remove-gray {
+    background-position: -5px -249px; }
+    [class^=ico_].ico_remove-gray:hover {
+      background-position: -35px -249px; }
+  [class^=ico_].ico_change-gray {
+    background-position: -1px -272px; }
+  [class^=ico_].ico_edit-gray {
+    background-position: -5px -276px; }
+    [class^=ico_].ico_edit-gray:hover {
+      background-position: -35px -276px; }
+  [class^=ico_].ico_small-pointer {
+    width: 16px;
+    height: 16px;
+    background-position: -3px -302px;
+    border-radius: 0; }
 
 .profile_body_social-checkbox .social-fb {
   background-position: -1px 0; }
