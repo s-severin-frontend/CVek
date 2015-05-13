@@ -91,11 +91,11 @@
                             </thead>
                             <tbody class="js-accordeon">
                                 <tr class="company_locations_city">
-                                    <td><span class="js-accordeon_head away-parent">Los Angeles (3)</span></td>
+                                    <td><span class="js-accordeon_head away-parent"><em>Los Angeles</em> <span class="company_locations_city_counter">(3)</span></span></td>
                                     <td>20</td>
                                     <td><i class="ico_change-gray radial-effect"></i></td>
                                 </tr>
-                                <tr>
+                                <tr class="js-accordeon_body">
                                     <td colspan="3" class="company_locations_child">
                                         <ul>
                                             <li>
@@ -103,21 +103,21 @@
                                                     <i class="ico_remove-gray"></i>
                                                     <i class="ico_edit-gray"></i>
                                                 </span>
-                                                <span class="company_locations_child_address">3601 E Colorado Blvd, Pasadena</span><i class="ico_small-pointer"></i>
+                                                <span class="company_locations_child_address" data-name="Office colorado" data-lat="53.945550" data-lng="27.682683"><em>3601 E Colorado Blvd, Pasadena</em> <i class="ico_small-pointer"></i></span>
                                             </li>
                                             <li>
                                                 <span class="company_locations_child_action pull-right">
                                                     <i class="ico_remove-gray"></i>
                                                     <i class="ico_edit-gray"></i>
                                                 </span>
-                                                <span class="company_locations_child_address">3400 E 1st St</span><i class="ico_small-pointer"></i>
+                                                <span class="company_locations_child_address" data-name="Office east" data-lat="53.945132" data-lng="27.689475"><em>3400 E 1st St</em> <i class="ico_small-pointer"></i></span>
                                             </li>
                                             <li>
                                                 <span class="company_locations_child_action pull-right">
                                                     <i class="ico_remove-gray"></i>
                                                     <i class="ico_edit-gray"></i>
                                                 </span>
-                                                <span class="company_locations_child_address">2405 South Vermont Avenu</span><i class="ico_small-pointer"></i>
+                                                <span class="company_locations_child_address" data-name="General office" data-lat="53.945932" data-lng="27.689115"><em>2405 South Vermont Avenu</em> <i class="ico_small-pointer"></i></span>
                                             </li>
                                         </ul>
                                     </td>
@@ -126,36 +126,109 @@
                                     <td colspan="3">
                                         <div class="company_map-wrapper">
                                             <i class="company_show-map"></i>
-                                            <div class="company_map" id="map"></div>
+                                            <div class="company_map"></div>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
-<!--                            <tbody class="js-accordeon">
-                                <tr>
-                                    <td><span class="js-accordeon_head away-parent">Los Angeles (3)</span></td>
-                                    <td>20</td>
+                            <tbody class="js-accordeon">
+                                <tr class="company_locations_city">
+                                    <td><span class="js-accordeon_head away-parent"><em>Chicago</em> <span class="company_locations_city_counter">(1)</span></span></td>
+                                    <td>10</td>
                                     <td><i class="ico_change-gray radial-effect"></i></td>
                                 </tr>
-                                <tr>
+                                <tr class="js-accordeon_body">
                                     <td colspan="3" class="company_locations_child">
                                         <ul>
                                             <li>
-                                                <div class="company_locations_child_action pull-right">
-                                                    <i class="ico_remove-gray radial-effect"></i>
-                                                    <i class="ico_edit-gray radial-effect"></i>
-                                                </div>
-                                                <span>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address" data-name="General office" data-lat="53.945932" data-lng="27.689115"><em>2405 South Vermont Avenu</em> <i class="ico_small-pointer"></i></span>
                                             </li>
                                         </ul>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td colspan="3">
+                                        <div class="company_map-wrapper">
+                                            <i class="company_show-map"></i>
+                                            <div class="company_map"></div>
+                                        </div>
+                                    </td>
                                 </tr>
-                            </tbody>-->
+                            </tbody>
+                            <tbody class="js-accordeon">
+                                <tr class="company_locations_city">
+                                    <td><span class="js-accordeon_head away-parent"><em>Springfield</em> <span class="company_locations_city_counter">(2)</span></span></td>
+                                    <td>15</td>
+                                    <td><i class="ico_change-gray radial-effect"></i></td>
+                                </tr>
+                                <tr class="js-accordeon_body">
+                                    <td colspan="3" class="company_locations_child">
+                                        <ul>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address" data-name="Office east" data-lat="53.945132" data-lng="27.689475"><em>3400 E 1st St</em> <i class="ico_small-pointer"></i></span>
+                                            </li>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address" data-name="General office" data-lat="53.945932" data-lng="27.689115"><em>2405 South Vermont Avenu</em> <i class="ico_small-pointer"></i></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="company_map-wrapper">
+                                            <i class="company_show-map"></i>
+                                            <div class="company_map"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody class="js-accordeon">
+                                <tr class="company_locations_city">
+                                    <td><span class="js-accordeon_head away-parent"><em>Lincoln</em> <span class="company_locations_city_counter">(2)</span></span></td>
+                                    <td>8</td>
+                                    <td><i class="ico_change-gray radial-effect"></i></td>
+                                </tr>
+                                <tr class="js-accordeon_body">
+                                    <td colspan="3" class="company_locations_child">
+                                        <ul>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address" data-name="Office colorado" data-lat="53.945550" data-lng="27.682683"><em>3601 E Colorado Blvd, Pasadena</em> <i class="ico_small-pointer"></i></span>
+                                            </li>
+                                            <li>
+                                                <span class="company_locations_child_action pull-right">
+                                                    <i class="ico_remove-gray"></i>
+                                                    <i class="ico_edit-gray"></i>
+                                                </span>
+                                                <span class="company_locations_child_address" data-name="Office east" data-lat="53.945132" data-lng="27.689475"><em>3400 E 1st St</em> <i class="ico_small-pointer"></i></span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="company_map-wrapper">
+                                            <i class="company_show-map"></i>
+                                            <div class="company_map"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
                             <tfoot>
                                 <tr>
                                     <td colspan="3"></td>

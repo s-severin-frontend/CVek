@@ -63,7 +63,7 @@
     }
     &.ico_remove-gray{
         background-position: -5px -249px;
-        &:hover{
+        &:hover, &.active{
             background-position: -35px -249px;
         }
     }

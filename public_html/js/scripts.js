@@ -158,11 +158,15 @@ function c(obj) {
     function accordeon(self){
         var acc_block = self.parent('.js-accordeon'),
             acc_body = acc_block.children('.js-accordeon_body');
+        if( self.hasClass('away-parent') ){
+            acc_block = self.parents('.js-accordeon');
+            acc_body = acc_block.find('.js-accordeon_body');
+        }
         var list = acc_body.children().get();
         if( !self.hasClass('active') ){
             $.each($(list), function (i, el) {
                 setTimeout(function() {
-                    $(el).css({'display': 'block'}).stop().animate({
+                    $(el).css({'display': 'table-cell'}).stop().animate({
                         'max-height': 10000,
                         'opacity': 1
                     }, 350);
@@ -308,9 +312,29 @@ function c(obj) {
     $(document).on('click', '.add-shift, .edit-shift', function(){ addShift($(this)); });
     
     function select(el){
-        el.select2({
+        if( el.hasClass('select-color') ){
+            function formatColor(option) {
+                c('color');
+                if (!option.id) {
+                    return option.text;
+                }
+                var $state = $(
+                        '<span class="select2-results__option_color ' + option.element.value + '">' + option.text + '</span>'
+                        );
+                return $state;
+            }
+            ;
+
+            $(".select-color").select2({
+                templateResult: formatColor,
+                templateSelection: formatColor,
+                minimumResultsForSearch: 15
+            });
+        }else{
+            el.select2({
                 minimumResultsForSearch: 15
             }); 
+        }
     }
     
     function scheduleToggle(){
@@ -413,11 +437,165 @@ function c(obj) {
         }
         cell.css(cell_styling).removeClass();
     }
-    $(document).on('click', '.remove-shift', function(){
-        removeCell( $(this).parents('td') );
+    $(document).on('click', '.remove-shift', function() {
+        removeCell($(this).parents('td'));
+    });
+
+    //Maps
+    function addMap(el, mapOptions, offses) {
+        var map;
+        function init() {
+            var mapElement = el[0];
+            map = new google.maps.Map(mapElement, mapOptions);
+            setMarkers(map, offses);
+        }
+
+        var markers = [];
+        function setMarkers(map, locations) {
+            var image = new google.maps.MarkerImage('img/pointer.png',
+                    new google.maps.Size(20, 28));
+            for (var i = 0; i < locations.length; i++) {
+                var office = locations[i];
+                var myLatLng = new google.maps.LatLng(office[1], office[2]);
+                markers[i] = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    icon: image,
+                    title: office[0],
+                    zIndex: office[3]
+                });
+                google.maps.event.addListener(markers[i], 'click', function(innerKey) {
+                    return function() {
+                        c(markers[innerKey].getPosition().lng().toFixed(5));
+                        var lat = markers[innerKey].getPosition().lat().toFixed(6),
+                                lng = markers[innerKey].getPosition().lng().toFixed(6);
+                        var $address = $('[data-lat*="' + lat + '"][data-lng*="' + lng + '"]');
+                        $address.parents('ul').find('.company_locations_child_address.active').removeClass('active');
+                        $address.addClass('active');
+                    };
+                }(i));
+            }
+        }
+        init();
+
+        var $location = el.parents('tbody');
+        $($location).on('click', '.company_locations_child_address', function() {
+            c('mapppps');
+            var lat = $(this).attr("data-lat"),
+                    lng = $(this).attr("data-lng");
+            var laLatLng = new google.maps.LatLng(lat, lng);
+            map.panTo(laLatLng);
+            $(this).parents('ul').find('.company_locations_child_address.active').removeClass('active');
+            $(this).addClass('active');
+        });
+
+    }
+    ;
+
+    $(document).on('click', '.company_show-map', function() {
+        var $el = $(this).parent('.company_map-wrapper').find('.company_map');
+        
+        if( !$(this).hasClass('active') ){
+            $(this).addClass('active');
+            if( !$el.hasClass('map-create') ) {
+                $el.addClass('map-create').slideDown(100, function() {
+                    var mapOptions = {
+                        zoom: 16,
+                        scrollwheel: false,
+                        center: new google.maps.LatLng(53.945550, 27.682683)
+                    };
+
+                    var offses = [
+                        ['Office colorado', 53.945550, 27.682683, 1],
+                        ['Office east', 53.945132, 27.689475, 1],
+                        ['General office', 53.945932, 27.689115, 1]
+                    ];
+                    addMap($el, mapOptions, offses);
+                });
+            }else{
+                $el.slideDown(100);
+            }
+        }else{
+            $(this).removeClass('active');
+            $el.slideUp(50);
+        }
+        
+        
+
+        return false;
     });
     
+    $(document).on('click', '.company_locations_child_action .ico_remove-gray', function() {
+        var $remove = $(this),
+            popup = '<span class="remove-popup"><button class="close_remove-popup"></button><span>Are you sure?</span><button class="ok_remove-popup"></button></span>';
+        $remove.addClass('active').after( popup );
+        var $popup = $remove.next('.remove-popup');
+        function canselPopup(){
+            $remove.removeClass('active');
+            $popup.fadeOut(200, function(){ $popup.remove(); });
+        }
+        $popup.on('click', '.close_remove-popup', function(){
+            canselPopup();
+        });
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) canselPopup();
+        });
+        $popup.on('click', '.ok_remove-popup', function(){
+            $remove.parents('li').remove();
+        });
+    });
     
+    function renameLocation( $button ) {
+        var $location = $button.parents('.company_locations_city'),
+            $name = $location.find('em');
+        $location.find('.company_locations_city_counter').addClass('hidden');
+        $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
+        var $input = $location.find("input");
+        $input.after("<label></label>");
+        $input.focus();
+        $input.on('blur', renameLocationSave);
+        $(document).on('keydown', function(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    renameLocationSave();
+                }
+            });
+        function renameLocationSave(){
+            $input.next("label").remove();
+            $input.replaceWith("<em>" + $input.val() + "</em>");
+            $location.find('.company_locations_city_counter').removeClass('hidden');
+            $input.unbind('keydown');
+        }
+    }
+    $(document).on('click', '.company_locations_city .ico_change-gray', function(){
+        renameLocation( $(this) );
+    });
+    
+    function renameAddress( $button ) {
+        var $address = $button.parents('li'),
+            $name = $address.find('em');
+        $address.find('.ico_small-pointer').addClass('hidden');
+        $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
+        var $input = $address.find("input");
+        $input.after("<label></label>");
+        $input.focus();
+        $input.on('blur', renameAddressSave);
+        $(document).on('keydown', function(e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    renameAddressSave();
+                }
+            });
+        function renameAddressSave(){
+            $input.next("label").remove();
+            $input.replaceWith("<em>" + $input.val() + "</em>");
+            $address.find('.ico_small-pointer').removeClass('hidden');
+            $input.unbind('keydown');
+        }
+    }
+    $(document).on('click', '.company_locations_child_action .ico_edit-gray', function(){
+        renameAddress( $(this) );
+    });
     
     $(document).ready(function() {
         //Move pointer navigate
@@ -445,55 +623,9 @@ function c(obj) {
         
         if( $('.schedule_toggle-view_rail').size() > 0 ) scheduleToggle();
         
-        //Карта
-    if ($('#map').size() > 0) {
-        function init() {
-            var mapOptions = {
-                zoom: 16,
-                scrollwheel: false,
-                center: new google.maps.LatLng(53.945550, 27.682683),
-                styles: [{featureType: 'water', stylers: [{color: '#46bcec'}, {visibility: 'on'}]}, {featureType: 'landscape', stylers: [{color: '#f2f2f2'}]}, {featureType: 'road', stylers: [{saturation: -100}, {lightness: 45}]}, {featureType: 'road.highway', stylers: [{visibility: 'simplified'}]}, {featureType: 'road.arterial', elementType: 'labels.icon', stylers: [{visibility: 'off'}]}, {featureType: 'administrative', elementType: 'labels.text.fill', stylers: [{color: '#444444'}]}, {featureType: 'transit', stylers: [{visibility: 'off'}]}, {featureType: 'poi', stylers: [{visibility: 'off'}]}]
-            };
-            var mapElement = document.getElementById('map');
-            var map = new google.maps.Map(mapElement, mapOptions);
-            setMarkers(map, offses_one);
-        }
-
-        var offses_one = [
-            ['Office', 53.945550, 27.682683, 1]
-        ];
-
-        var markers = [];
-        var infowindows = [];
-        function setMarkers(map, locations) {
-            var image = new google.maps.MarkerImage('img/pointer.png',
-                    new google.maps.Size(69, 50),
-                    new google.maps.Point(1, 0),
-                    new google.maps.Point(0, 55));
-            var shape = {
-                coord: [1, 1, 1, 55, 55, 55, 55, 1],
-                type: 'poly'
-            };
-            for (var i = 0; i < locations.length; i++) {
-                var office = locations[i];
-                var myLatLng = new google.maps.LatLng(office[1], office[2]);
-                markers[i] = new google.maps.Marker({
-                    position: myLatLng,
-                    map: map,
-                    icon: image,
-                    shape: shape,
-                    title: office[0],
-                    zIndex: office[3],
-                });
-                google.maps.event.addListener(markers[i], 'click', function(innerKey) {
-                    return function() {
-                        infowindows[innerKey].open(map, markers[innerKey]);
-                    };
-                }(i));
-            }
-        }
-        google.maps.event.addDomListener(window, 'load', init);
-    }   
+        
+        
+        
         
     });
     

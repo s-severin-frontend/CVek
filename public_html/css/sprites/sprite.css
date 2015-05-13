@@ -61,7 +61,7 @@
     cursor: pointer; }
   [class^=ico_].ico_remove-gray {
     background-position: -5px -249px; }
-    [class^=ico_].ico_remove-gray:hover {
+    [class^=ico_].ico_remove-gray:hover, [class^=ico_].ico_remove-gray.active {
       background-position: -35px -249px; }
   [class^=ico_].ico_change-gray {
     background-position: -1px -272px; }
