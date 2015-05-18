@@ -294,6 +294,11 @@ button {
   cursor: pointer;
   outline: none; }
 
+.js-tabs_body {
+  display: none; }
+  .js-tabs_body.active {
+    display: block; }
+
 @media print {
   * {
     text-shadow: none !important;

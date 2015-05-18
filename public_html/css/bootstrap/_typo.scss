@@ -145,3 +145,10 @@ button{
     cursor: pointer;
     outline: none;
 }
+
+.js-tabs_body{
+    display: none;
+    &.active{
+        display: block;
+    }
+}

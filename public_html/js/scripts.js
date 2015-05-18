@@ -285,7 +285,6 @@ function c(obj) {
             $td.animate({
                     'height': td_heihgt
                 }, 200);
-            //jQuery(document).on("click.myevent", ".SearchableCol", nwcsClickFunc);    
             $(document).on("mouseenter", '[data-type="week"] td', function(){ actionCell( $(this) ); } );
             $(document).on("mouseleave", '[data-type="week"] td', function(){ revertCell( $(this) ); } );
             return false;
@@ -597,6 +596,154 @@ function c(obj) {
         renameAddress( $(this) );
     });
     
+    function positionEdit( $button ) {
+        var select_html = '<div class="company_position_color_select">\
+                        <label>Select Color</label>\
+                            <div class="select-wrapper">\
+                                <select class="select-color" aria-hidden="true">\
+                                    <option value="color-0e8db0">&nbsp;</option>\
+                                    <option value="color-1c72a3">&nbsp;</option>\
+                                    <option value="color-0e6f76">&nbsp;</option>\
+                                    <option value="color-147063">&nbsp;</option>\
+                                    <option value="color-3da081">&nbsp;</option>\
+                                    <option value="color-ed7425">&nbsp;</option>\
+                                    <option value="color-e84a1d">&nbsp;</option>\
+                                    <option value="color-8e410d">&nbsp;</option>\
+                                    <option value="color-8e3db8">&nbsp;</option>\
+                                    <option value="color-e16764">&nbsp;</option>\
+                                </select>\
+                            </div>\
+                        </div>';
+        var $position = $button.parents('tr'),
+            $name = $position.find('.company_position_name');
+        $button.hide().after('<i class="company_position_save"></i>');
+        $position.find('.ico_remove-gray').addClass('hidden');
+        $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
+        var $input = $position.find("input[type='text']");
+        $input.after("<label></label>");
+        var $color = $position.find('.company_position_color'),
+            color = $color.attr('data-color');
+        $color.hide().after( select_html );
+        var $select = $position.find('select');
+        $select.find('[value=' + color + ']').attr('selected','selected');
+        select($select);
+        $(document).on('click', '.company_position_save', function() {
+            positionEditSave($(this));
+        });
+        $input.focus();
+        function positionEditSave(){
+            $button.show().next('.company_position_save').remove();
+            $position.find('.ico_remove-gray').removeClass('hidden');
+            $input.next("label").remove();
+            $input.replaceWith("<span class='company_position_name'>" + $input.val() + "</span>");
+            color = $select.val();
+            $color.removeClassWild("color-*").addClass(color).attr('data-color', color).show().nextAll('div').remove();
+        }
+    }
+    $(document).on('click', '.company_position_edit', function(){
+        positionEdit( $(this) );
+    });
+    
+    $(document).on('click', '.company_position_remove', function() {
+        var $remove = $(this),
+            popup = '<span class="remove-popup"><button class="close_remove-popup"></button><span>Are you sure?</span><button class="ok_remove-popup"></button></span>';
+        $remove.addClass('active').after( popup );
+        var $popup = $remove.next('.remove-popup');
+        function canselPopup(){
+            $remove.removeClass('active');
+            $popup.fadeOut(200, function(){ $popup.remove(); });
+        }
+        $popup.on('click', '.close_remove-popup', function(){
+            canselPopup();
+        });
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) canselPopup();
+        });
+        $popup.on('click', '.ok_remove-popup', function(){
+            $remove.parents('tr').remove();
+        });
+    });
+    
+    $(document).on('change', '.check-all_checkboxes', function(){
+        var $this = $(this),
+            $checkList = $this.parents('.check-all_checkboxes_parent'),
+            $checkboxes = $checkList.find('tbody [type="checkbox"]');
+        if( $this.prop('checked') ){
+            $checkboxes.each(function(){
+                $(this).prop('checked', true);
+            });
+        }else{
+            $checkboxes.each(function(){
+                $(this).prop('checked', false);
+            });
+            $checkboxes.unbind('change');
+        }
+        $checkboxes.on('change', function(){
+            if( $checkList.find('[type="checkbox"]:not(:checked)') && $this.prop('checked') ){
+                $this.prop('checked', false);
+            }
+        });
+        
+    });
+    
+    $(document).on('click', '.js-tabs_head > *', function(){
+        if( !$(this).hasClass('active') ){
+            var $tab_head = $(this),
+                $tab_wrapper = $tab_head.parents('.js-tabs'),
+                tab_type = $tab_head.attr('data-tab');
+            $tab_wrapper.find('.js-tabs_head > .active').removeClass('active');
+            $tab_head.addClass('active');
+            $tab_wrapper.find('.js-tabs_body.active').removeClass('active');
+            $tab_wrapper.find('.js-tabs_body[data-tab="' + tab_type + '"]').addClass('active');
+        }
+        return false;
+    });
+    
+    function empoloyeAvailible( trigger ){
+        var $line = trigger.parents('tr').next();
+        if( !trigger.hasClass('active') ){
+            trigger.addClass('active');
+            $line.find('.inner-info[data-type="employees_schedule"]').stop().slideDown(200);
+        }else{
+            trigger.removeClass('active');
+            $line.find('.inner-info[data-type="employees_schedule"]').stop().slideUp(50);
+        }
+        return false;
+    };
+    $(document).on('click', '.company_employees_available_open', function(){ empoloyeAvailible( $(this) ); });
+    
+    function empoloyeSchedule( trigger ){
+        var $line = trigger.parents('tr').next();
+        if( !trigger.hasClass('active') ){
+            trigger.addClass('active');
+            $line.find('.inner-info[data-type="employees_capability"]').stop().slideDown(200);
+        }else{
+            trigger.removeClass('active');
+            $line.find('.inner-info[data-type="employees_capability"]').stop().slideUp(50);
+        }
+        return false;
+    };
+    $(document).on('click', '.company_employees_schedule_open', function(){ empoloyeSchedule( $(this) ); });
+    
+    function empoloyeEdit( trigger ){
+        var $line = trigger.parents('tr').next();
+        if( !trigger.hasClass('active') ){
+            trigger.addClass('active');
+            $line.find('.inner-info[data-type="employees_profile"]').stop().slideDown(200);
+        }else{
+            trigger.removeClass('active');
+            $line.find('.inner-info[data-type="employees_profile"]').stop().slideUp(50);
+        }
+        $(document).on('click', '.employees_profile_close', function(){
+            $(this).parents('tr').prev().find('.company_employees_edit').removeClass('active');
+            $(this).parents('.inner-info').stop().slideUp(50);
+            $('.employees_profile_close').unbind('click');
+            return false;
+        });
+        return false;
+    };
+    $(document).on('click', '.company_employees_edit', function(){ empoloyeEdit( $(this) ); });
+    
     $(document).ready(function() {
         //Move pointer navigate
         $("nav").size() > 0 ? navigate() : false;
@@ -635,3 +782,11 @@ function c(obj) {
 
 })(this);
 
+(function($) {
+    $.fn.removeClassWild = function(mask) {
+        return this.removeClass(function(index, cls) {
+            var re = mask.replace(/\*/g, '\\S+');
+            return (cls.match(new RegExp('\\b' + re + '', 'g')) || []).join(' ');
+        });
+    };
+})(jQuery);

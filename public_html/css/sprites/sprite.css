@@ -54,7 +54,7 @@
   [class^=ico_].ico_geoposition {
     background-position: 0 -213px;
     border-radius: 0; }
-  [class^=ico_].ico_remove-gray, [class^=ico_].ico_edit-gray {
+  [class^=ico_].ico_remove-gray, [class^=ico_].ico_edit-gray, [class^=ico_].ico_available, [class^=ico_].ico_schedule {
     width: 21px;
     height: 21px;
     border-radius: 0;
@@ -74,6 +74,14 @@
     height: 16px;
     background-position: -3px -302px;
     border-radius: 0; }
+  [class^=ico_].ico_available {
+    background-position: -6px -362px; }
+    [class^=ico_].ico_available:hover, [class^=ico_].ico_available.active {
+      background-position: -34px -362px; }
+  [class^=ico_].ico_schedule {
+    background-position: -6px -327px; }
+    [class^=ico_].ico_schedule:hover, [class^=ico_].ico_schedule.active {
+      background-position: -34px -327px; }
 
 .profile_body_social-checkbox .social-fb {
   background-position: -1px 0; }
@@ -128,6 +136,42 @@
 
 .color-dadada {
   background: #dadada; }
+
+.color-e53935 {
+  background: #e53935; }
+
+.color-43a047 {
+  background: #43a047; }
+
+.color-0e8db0 {
+  background: #0e8db0; }
+
+.color-1c72a3 {
+  background: #1c72a3; }
+
+.color-0e6f76 {
+  background: #0e6f76; }
+
+.color-147063 {
+  background: #147063; }
+
+.color-3da081 {
+  background: #3da081; }
+
+.color-ed7425 {
+  background: #ed7425; }
+
+.color-e84a1d {
+  background: #e84a1d; }
+
+.color-8e410d {
+  background: #8e410d; }
+
+.color-8e3db8 {
+  background: #8e3db8; }
+
+.color-e16764 {
+  background: #e16764; }
 
 /*.color-{background: #;}*/
 
