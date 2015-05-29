@@ -46,7 +46,7 @@
         </form>
         <h1>My Profile</h1>
     </header>
-    <div id="content">
+    <div id="content" class="profile">
         <div class="saving"><i><img src="img/load.gif" alt="..." /></i>Saved...</div>
         <form action="" class="profile">
             <section class="profile_header">
@@ -55,33 +55,46 @@
                     <input type="file" title="Load new photo" />
                 </div>
                 <div class="profile_header_change-password">
-                    <i class="ico_change-password popup-open radial-effect" data-popup="change-pass"></i>
+                    <i class="ico_change-password popup-open" data-popup="change-pass"></i>
                     <div class="popup" id="change-pass">
                         <p class="popup_title">Change Password</p>
-                        <div class="input_wrapper lbord-red">
+                        <div class="input_wrapper">
                             <input type="password" value="" />
                             <label class="input_label">Current Password</label>
                         </div>
-                        <div class="input_wrapper lbord-red">
+                        <br />
+                        <div class="input_wrapper">
                             <input type="password" value="" />
                             <label class="input_label">New Password</label>
                         </div>
-                        <div class="input_wrapper lbord-red">
+                        <div class="input_wrapper">
                             <input type="password" value="" />
                             <label class="input_label">Confirm Password</label>
                         </div>
                         <div class="profile_header_change-password_submit">
-                            <button class="button-ok"></button>
+                            <button class="button-ok disabled"><i></i></button>
                         </div>
                     </div> 
                 </div>
                 <h2 class="profile_header_name">
                     Hi, <span>Mia Wasikowska</span>
-                    <i class="ico_change-name radial-effect"></i>
+                    <i class="ico_change-name"></i>
                 </h2>
                 <div class="profile_header_icons">
-                    <i class="ico_phone radial-effect" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
-                    <i class="ico_email radial-effect" title="<p>email: test@test.com</p>"></i>
+                    <i class="ico_phone popup-open" data-popup="phones-popup"></i>
+                    <div class="popup inline-view" id="phones-popup">
+                        <div class="form-group">
+                            <input type="text" value="+1-831-851-0444" />
+                            <label class="form-group_label">Phone</label>
+                        </div>
+                    </div> 
+                    <i class="ico_email popup-open" data-popup="email-popup"></i>
+                    <div class="popup inline-view" id="email-popup">
+                        <div class="form-group">
+                            <input type="text" value="mail@gmail.com" />
+                            <label class="form-group_label">Email</label>
+                        </div>
+                    </div> 
                 </div>
             </section>
             <section class="profile_body">

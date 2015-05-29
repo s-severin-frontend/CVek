@@ -54,6 +54,9 @@
   .waves-effect.waves-classic.waves-light .waves-ripple {
     background: rgba(255, 255, 255, 0.4); }
 
+td.waves-effect {
+  display: table-cell; }
+
 .waves-notransition {
   -webkit-transition: none !important;
   -moz-transition: none !important;

@@ -17,34 +17,67 @@
   background-position: -14px -339px;
   height: 51px; }
 
+.nav_punkt_availability i {
+  background-position: -14px -425px;
+  height: 62px;
+  width: 54px; }
+
 .header_button_ico.logout {
-  background-position: -225px center; }
+  background-position: -225px 0; }
 .header_button_ico.delete {
-  background-position: -187px center; }
+  background-position: -187px 0; }
 .header_button_ico.print {
-  background-position: -143px center; }
+  background-position: -143px 0; }
 .header_button_ico.settings {
-  background-position: -95px center; }
+  background-position: -95px 0; }
 .header_button_ico.add {
-  background-position: -46px center; }
+  background-position: -46px 0; }
 .header_button_ico.plus {
-  background-position: 1px center; }
+  background-position: 1px 0; }
+.header_button_ico.add-2 {
+  background-position: -264px 0; }
+.header_button_ico.logout:active {
+  background-position: -225px -30px; }
+.header_button_ico.delete:active {
+  background-position: -187px -30px; }
+.header_button_ico.print:active {
+  background-position: -143px -30px; }
+.header_button_ico.settings:active {
+  background-position: -95px -30px; }
+.header_button_ico.add:active {
+  background-position: -46px -30px; }
+.header_button_ico.plus:active {
+  background-position: 1px -30px; }
+.header_button_ico.add-2:active {
+  background-position: -264px -30px; }
 
 [class^=ico_] {
   background: url("../img/sprite.png") no-repeat; }
   [class^=ico_].ico_phone {
-    background-position: 1px 0;
+    background-position: -30px -449px;
     border-radius: 0; }
+    [class^=ico_].ico_phone:hover:not(.disabled), [class^=ico_].ico_phone.active {
+      background-position: 1px 0; }
+    [class^=ico_].ico_phone.disabled {
+      opacity: .3;
+      cursor: default; }
   [class^=ico_].ico_change-name {
     background-position: 1px -45px; }
   [class^=ico_].ico_change-password {
     background-position: 1px -85px; }
+    [class^=ico_].ico_change-password:hover, [class^=ico_].ico_change-password.active {
+      background-position: -33px -415px; }
   [class^=ico_].ico_email {
     background-position: 0 -128px;
     border-radius: 0; }
+    [class^=ico_].ico_email:hover:not(.disabled), [class^=ico_].ico_email.active {
+      background-position: 0 -450px; }
+    [class^=ico_].ico_email.disabled {
+      opacity: .3;
+      cursor: default; }
   [class^=ico_].ico_time {
-    background-position: -35px -84px;
-    width: 25px; }
+    background-position: -2px -416px;
+    width: 30px; }
   [class^=ico_].ico_select-day {
     background-position: -32px 0;
     border-radius: 0; }
@@ -54,6 +87,11 @@
   [class^=ico_].ico_geoposition {
     background-position: 0 -213px;
     border-radius: 0; }
+    [class^=ico_].ico_geoposition:hover:not(.disabled), [class^=ico_].ico_geoposition.active {
+      background-position: -30px -213px; }
+    [class^=ico_].ico_geoposition.disabled {
+      opacity: .3;
+      cursor: default; }
   [class^=ico_].ico_remove-gray, [class^=ico_].ico_edit-gray, [class^=ico_].ico_available, [class^=ico_].ico_schedule {
     width: 21px;
     height: 21px;

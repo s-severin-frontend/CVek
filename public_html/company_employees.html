@@ -41,7 +41,8 @@
     </nav>
     <header>
         <form class="header_action">
-            <button class="header_button_ico plus"></button>
+            <button class="header_button_ico add add-row"></button>
+            <button class="header_button_ico delete"></button>
             <button class="header_button_ico logout"></button>
         </form>
         <h1>Company</h1>
@@ -58,8 +59,9 @@
                 </ul>
             </section>
             <hr />
-            <section class="menu_filtr">
+            <section class="menu_filtr  check-list">
                 <h3 class="menu_filtr_title">
+                    <span class="check-all">All</span>
                     Locations
                 </h3>
                 <form class="js-accordeon city-filtr">
@@ -87,7 +89,7 @@
                         </fieldset>
                     </div>
                     <div class="js-accordeon_head acenter">
-                        More <i class="arrow"></i>
+                        <span class="show-text">More</span><span class="hide-text">Less</span> <i class="arrow"></i>
                     </div>
                 </form>
             </section>
@@ -103,12 +105,12 @@
                 
                 <h2 class="company_header_name">
                     <span>Pizza Hut</span>
-                    <i class="ico_change-name radial-effect"></i>
+                    <i class="ico_change-name"></i>
                 </h2>
                 <div class="company_header_icons">
-                    <i class="ico_phone radial-effect" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
-                    <i class="ico_email radial-effect" title="<p>email: test@test.com</p>"></i>
-                    <i class="ico_geoposition radial-effect" title="<p>Coordinats</p>"></i>
+                    <i class="ico_phone" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
+                    <i class="ico_email" title="<p>email: test@test.com</p>"></i>
+                    <i class="ico_geoposition" title="<p>Coordinats</p>"></i>
                 </div>
             </section>
             <section class="company_employees company_data">
@@ -120,7 +122,7 @@
                     </form>
                     <h3>Employees</h3>
                     <div>
-                        <table class="company_data_table company_employees_table check-all_checkboxes_parent">
+                        <table class="company_data_table company_employees_table check-all_checkboxes_parent added-table">
                             <thead>
                                 <tr>
                                     <th>
@@ -134,6 +136,87 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr class="added-row">
+                                    <td colspan="5">
+                                        <div class="inner-info" data-type="employees_profile">
+                                            <button class="employees_new-line_close adder-row_remove"></button>
+                                            <div class="js-tabs">
+                                                <div class="js-tabs_head employees_profile_nav">
+                                                    <div class="active wave" data-tab="em_prof_prof">Profile</div>
+                                                    <div class="wave" data-tab="em_prof_locate">Locations/Positions</div>
+                                                </div>
+                                                <div class="js-tabs_body active" data-tab="em_prof_prof">
+                                                    <div class="employees_edit_profile clearfix">
+                                                        <div class="employees_edit_profile_avatar">
+                                                            <img src="img/temp/avatar-2.jpg" alt="Avatar" />
+                                                            <input type="file" title="Load new photo" />
+                                                        </div>
+                                                        <div>
+                                                            <fieldset>
+                                                                <label>Edit Name</label>
+                                                                <input type="text" value="" />
+                                                            </fieldset>
+                                                            <fieldset class="form-group has-error">
+                                                                <label>Edit Last Name</label>
+                                                                <input type="text" value="" />
+                                                                <div class="help-block">Error field</div>
+                                                            </fieldset>
+                                                        </div>
+                                                        <div>
+                                                            <fieldset>
+                                                                <label>Edit Email</label>
+                                                                <input type="text" value="" />
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <label>Edit Phone</label>
+                                                                <input type="text" value="" />
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                    <p class="employees_edit_profile_privilegies">Acces Privileges</p>
+                                                    <fieldset class="employees_edit_profile_privilegies">
+                                                        <input type="radio" id="rad1" name="rr1" /><label for="rad1">Manager</label>
+                                                    </fieldset>
+                                                    <fieldset class="employees_edit_profile_privilegies">
+                                                        <input type="radio" id="rad2" name="rr1" /><label for="rad2">Supervisor</label>
+                                                    </fieldset>
+                                                    <fieldset class="employees_edit_profile_privilegies">
+                                                        <input type="radio" id="rad3" name="rr1" /><label for="rad3">Employee</label>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="js-tabs_body" data-tab="em_prof_locate">
+                                                    <div class="employees_edit_postion">
+                                                        <p>Positions</p>
+                                                        <fieldset>
+                                                            <label>Select Position to Add</label>
+                                                            <div class="select-wrapper">
+                                                                <select>
+                                                                    <option>Manager</option>
+                                                                    <option>Coock</option>
+                                                                    <option>Director</option>
+                                                                </select>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="employees_edit_location">
+                                                        <p>Locations</p>
+                                                        <fieldset>
+                                                            <label>Select Position to Add</label>
+                                                            <div class="select-wrapper">
+                                                                <select>
+                                                                    <option>Los Angeles</option>
+                                                                    <option>Washington</option>
+                                                                    <option>Texas</option>
+                                                                </select>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="button-ok"><i></i></div>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <input type="checkbox" value="s-1" id="s-1" />

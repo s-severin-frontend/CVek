@@ -41,14 +41,8 @@ function c(obj) {
             var screen = [];
             var size = [];
             if ($(this).attr("title") != "" && $(this).attr("title") != "undefined") {
-                $(this).removeAttr("title").mouseenter(function() {                
-                    tooltip.css({
-                        opacity: 1,
-                        display: "block"    
-                    }).stop().animate({
-                        'maxHeight': 1000,
-                        'maxWidth': 1000
-                    }, 300)        
+                $(this).removeAttr("title").mouseenter(function() {  
+                    tooltip.stop().fadeIn(150);
                 }).mousemove(function(kmouse) {                
                     screen = {
                         'horizontal': $(window).width() / 2,
@@ -59,16 +53,9 @@ function c(obj) {
                         'height': tooltip.outerHeight()
                     };
                     kmouse.pageX < screen.horizontal ? tooltip.css({left: kmouse.pageX + 15}) : tooltip.css({left: kmouse.pageX - 15 - size.width});
-                    kmouse.pageY < screen.vertical ? tooltip.css({top: kmouse.pageY + 15}) : tooltip.css({top: kmouse.pageY - 15 - size.height});
+                    kmouse.pageY < screen.vertical ? tooltip.css({top: kmouse.pageY + 14}) : tooltip.css({top: kmouse.pageY - 14 - size.height});
                 }).mouseleave(function() {          
-                    tooltip.stop().animate({
-                        'maxHeight': 0,
-                        'maxWidth': 0
-                    }, 100, function() {
-                        tooltip.css({
-                            'display': 'none'
-                        });
-                    })   
+                    tooltip.stop().fadeOut(50);
                 });        
             }    
         });
@@ -85,27 +72,34 @@ function c(obj) {
         });
     }
     
-    function checkInputEmpty(){
-        $(document).on('change', 'input', function(e) {
-            var self = $(this);
-            self.removeClass('no-empty');
-            if( self.val() !== "" && ( self.attr('type') == 'text' || self.attr('type') == 'password' ) ){
-                self.addClass('no-empty');
-            }
-        });
+    function checkInputEmpty(input){
+        if( input.hasClass('no-empty') ) input.removeClass('no-empty');
+        if (input.val() !== "" && (input.attr('type') == 'text' || input.attr('type') == 'password')) {
+            input.addClass('no-empty');
+        }
     }
+    $(document).on('change', 'input', function(e) {
+        var self = $(this);
+        checkInputEmpty(self);
+    });
     
     function staticPopup(){
         $(document).on('click', '.popup-open', function(e) {
+            if( $('.popup.open').size() > 0 ) closePopUp();
             var name = $(this).attr('data-popup'),
                 $popup = $('#' + name);
+            if( !$popup.hasClass('inline-view') ){
+                $popup.css({'display': 'block'});
+            }else{
+                $popup.css({'display': 'inline-block'});
+            }  
+            $(this).addClass('active');
             $popup.css({
-                'display': 'block',
                 'opacity': 1
             }).stop().addClass('open').animate({
                 'maxHeight': 1000,
                 'maxWidth': 1000
-            }, 400);
+            }, 200);
             $(document).bind('click.myEvent', function(e) {
                 if ($(e.target).closest( $popup ).length == 0) {
                     closePopUp();
@@ -119,17 +113,21 @@ function c(obj) {
                     $(document).unbind('keydown');
                 }
             });
+            return false;
         });
         function closePopUp(){
             var $popup = $('.popup.open');
+            $('.popup-open.active').removeClass('active');
             $popup.stop().animate({
-                'opacity': 0
-            }, 300, function(){
+                'opacity': 0,
+                'maxHeight': 0,
+                'maxWidth': 0
+            }, 100, function(){
                 $popup.removeClass('open')
                         .css({
-                            'display': 'block',
+                            'display': 'none',
                             'maxHeight': 0,
-                'maxWidth': 0
+                            'maxWidth': 0
                         });
             });
         }
@@ -218,8 +216,11 @@ function c(obj) {
     $(document).on('click', '.check-all', function(e){
         var $this = $(this),
             $checkList = $this.parents('.check-list');
+        $this.toggleClass('active');
+        var check = false;
+        if( $this.hasClass('active') ) check = true;
         $checkList.find('[type="checkbox"]').each(function(){
-            $(this).prop('checked', true);
+            $(this).prop('checked', check);
         });
     });
     
@@ -234,7 +235,7 @@ function c(obj) {
         var td_heihgt = $td.height();
         $td.animate({
             'height': heightPopup
-        },600);
+        },350);
         var $first_td = el.parents('tr').find('td');
         var $last_td = el.parents('tr').find('td').last();
         var new_coord = [];
@@ -253,6 +254,7 @@ function c(obj) {
             $(this).select2('destroy');
         });
         var $popup = $tamplate.clone();
+        $popup.children().css({'opacity': 0});
         $popup.appendTo($curr_td)
                 .removeClass("template")
                 .css({
@@ -263,14 +265,14 @@ function c(obj) {
                 })
                 .animate({
                     'opacity': 1
-                }, 200)
+                }, 50)
                 .animate({
                     'top': new_coord.top,
                     'left': new_coord.left,
                     'width': new_coord.right - new_coord.left,
                     'height': new_coord.bottom - new_coord.top
-                }, 600,function(){
-                    
+                }, 300,function(){
+                    $popup.children().animate({'opacity': 1},50);
                 });
         $popup.find('select').each(function(){
             select($("select"));
@@ -279,12 +281,12 @@ function c(obj) {
         $(document).off("mouseleave", '[data-type="week"] td');
 
         function closeShift(){
-            $popup.fadeOut(200, function(){
+            $popup.fadeOut(100, function(){
                 $popup.remove();
             });
             $td.animate({
                     'height': td_heihgt
-                }, 200);
+                }, 100);
             $(document).on("mouseenter", '[data-type="week"] td', function(){ actionCell( $(this) ); } );
             $(document).on("mouseleave", '[data-type="week"] td', function(){ revertCell( $(this) ); } );
             return false;
@@ -308,7 +310,11 @@ function c(obj) {
         }).resize();
     }
     
-    $(document).on('click', '.add-shift, .edit-shift', function(){ addShift($(this)); });
+    $(document).on('click', '.add-shift, .edit-shift', function(){ 
+        var $el = $(this);
+        addShift( $el ); 
+        setTimeout( revertCell( $el.parents('td') ), 200 );
+    });
     
     function select(el){
         if( el.hasClass('select-color') ){
@@ -395,7 +401,7 @@ function c(obj) {
         });
     
     function actionCell(cell){
-        if( cell.parents('.schedule_vacancy').size() > 0 ) return false;
+//        if( cell.parents('.schedule_vacancy').size() > 0 ) return false;
         if( !cell.children().size() > 0 ){
             cell.append('<button class="wave add-shift"></button>');
         }else{
@@ -545,14 +551,21 @@ function c(obj) {
     });
     
     function renameLocation( $button ) {
+        c('tut');
         var $location = $button.parents('.company_locations_city'),
-            $name = $location.find('em');
+            $name = $location.find('em'),
+            placeholder = $name.data('placeholder');
         $location.find('.company_locations_city_counter').addClass('hidden');
         $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
         var $input = $location.find("input");
-        $input.after("<label></label>");
+        $input.wrap('<div class="form-group"></div>');
+        var $inp_wrap = $input.parent('.form-group');
+        checkInputEmpty($input);
+        $input.after("<label class='form-group_label'>" + placeholder + "</label>");
+        $inp_wrap.append('<i class="edited-save"></i>');
         $input.focus();
-        $input.on('blur', renameLocationSave);
+//        $input.on('blur', renameLocationSave);
+        $inp_wrap.on('click', '.edited-save', renameLocationSave);
         $(document).on('keydown', function(e) {
                 if (e.keyCode === 13) {
                     e.preventDefault();
@@ -561,7 +574,7 @@ function c(obj) {
             });
         function renameLocationSave(){
             $input.next("label").remove();
-            $input.replaceWith("<em>" + $input.val() + "</em>");
+            $inp_wrap.replaceWith("<em>" + $input.val() + "</em>");
             $location.find('.company_locations_city_counter').removeClass('hidden');
             $input.unbind('keydown');
         }
@@ -572,13 +585,19 @@ function c(obj) {
     
     function renameAddress( $button ) {
         var $address = $button.parents('li'),
-            $name = $address.find('em');
+            $name = $address.find('em'),
+            placeholder = $name.data('placeholder');
         $address.find('.ico_small-pointer').addClass('hidden');
         $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
         var $input = $address.find("input");
-        $input.after("<label></label>");
+        $input.wrap('<div class="form-group smaller"></div>');
+        var $inp_wrap = $input.parent('.form-group');
+        checkInputEmpty($input);
+        $input.after("<label class='form-group_label'>" + placeholder + "</label>");
+        $inp_wrap.append('<i class="edited-save"></i>');
         $input.focus();
-        $input.on('blur', renameAddressSave);
+//        $input.on('blur', renameAddressSave);
+        $inp_wrap.on('click', '.edited-save', renameAddressSave);
         $(document).on('keydown', function(e) {
                 if (e.keyCode === 13) {
                     e.preventDefault();
@@ -587,7 +606,7 @@ function c(obj) {
             });
         function renameAddressSave(){
             $input.next("label").remove();
-            $input.replaceWith("<em>" + $input.val() + "</em>");
+            $inp_wrap.replaceWith("<em>" + $input.val() + "</em>");
             $address.find('.ico_small-pointer').removeClass('hidden');
             $input.unbind('keydown');
         }
@@ -651,7 +670,7 @@ function c(obj) {
         var $popup = $remove.next('.remove-popup');
         function canselPopup(){
             $remove.removeClass('active');
-            $popup.fadeOut(200, function(){ $popup.remove(); });
+            $popup.fadeOut(50, function(){ $popup.remove(); });
         }
         $popup.on('click', '.close_remove-popup', function(){
             canselPopup();
@@ -710,7 +729,7 @@ function c(obj) {
         }
         return false;
     };
-    $(document).on('click', '.company_employees_available_open', function(){ empoloyeAvailible( $(this) ); });
+    $(document).on('click', '.company_employees_schedule_open', function(){ empoloyeAvailible( $(this) ); });
     
     function empoloyeSchedule( trigger ){
         var $line = trigger.parents('tr').next();
@@ -723,7 +742,7 @@ function c(obj) {
         }
         return false;
     };
-    $(document).on('click', '.company_employees_schedule_open', function(){ empoloyeSchedule( $(this) ); });
+    $(document).on('click', '.company_employees_available_open', function(){ empoloyeSchedule( $(this) ); });
     
     function empoloyeEdit( trigger ){
         var $line = trigger.parents('tr').next();
@@ -744,6 +763,102 @@ function c(obj) {
     };
     $(document).on('click', '.company_employees_edit', function(){ empoloyeEdit( $(this) ); });
     
+    function duplicateInput(input){
+        var $wrapper = input.parents('.duplicate-wrapper');
+        var $clone = $wrapper.clone().addClass('clone');
+        $clone.find('input').val('');
+        cloockpiker($clone.find('input'));
+        $wrapper.after( $clone );
+        
+    }
+    $(document).on('change, blur', '.duplicate', function(){
+        var input = $(this);
+        var complete = true;
+        input.parents('.duplicate-wrapper').find('.duplicate').each(function(){
+            if ($(this).val() == "") complete = false;
+        });
+        if(complete) duplicateInput(input);
+    });
+    
+    function addAvailibly($field){
+        var $block = $field.next('.add-availabily');
+        if( $block.hasClass('active') ){
+            hideAddAvailibly();
+        }else{
+            $block.stop().slideDown().addClass('active');
+        }
+        $(document).on('click', '.add-availabily.active .button-ok', function() {
+            hideAddAvailibly();
+            $(document).unbind('click', '.add-availabily.active .button-ok');
+            return false;
+        });
+    }
+    function hideAddAvailibly(){
+        var $block = $('.add-availabily.active');
+        $block.stop().slideUp().removeClass('active');
+    }
+    $(document).on('click', '.availabily-wrapper', function(){ 
+        addAvailibly($(this));
+    });
+    
+    function cloockpiker( $input ){
+        $input.clockpicker({
+                donetext: '<i></i>'
+//                init: function() {
+//                    console.log("colorpicker initiated");
+//                },
+//                beforeShow: function() {
+//                    console.log("before show");
+//                },
+//                afterShow: function() {
+//                    console.log("after show");
+//                },
+//                beforeHide: function() {
+//                    console.log("before hide");
+//                },
+//                afterHide: function() {
+//                    console.log("after hide");
+//                }
+//                beforeHourSelect: function() {
+//                    console.log("before hour selected");
+//                },
+//                afterHourSelect: function() {
+//                    console.log("after hour selected");
+//                },
+//                beforeDone: function() {
+//                    console.log("before done");
+//                },
+//                afterDone: function() {
+//                    console.log("after done");
+//                }
+            });
+    }
+    
+    function addingRow( $table ){
+        c('11111');
+        var $first_line = $table.find('.added-row').first();
+        if( $first_line.find('select').size() > 0 ) $first_line.find('select').select2("destroy");
+        var $clone = $first_line.clone();
+        $first_line.before($clone);
+        $clone.css({
+            'display': 'table-row'
+        });
+        var $select = $clone.find('select');
+        select($select);
+    }
+    function addingRowRemove( $row ){
+        $row.remove();
+    }
+    $(document).on('click', '.add-row', function(){
+        addingRow( $('.added-table') );
+        return false;
+    });
+    $(document).on('click', '.adder-row_remove', function(){
+        addingRowRemove( $(this).parents('.added-row') );
+        return false;
+    });
+            
+    
     $(document).ready(function() {
         //Move pointer navigate
         $("nav").size() > 0 ? navigate() : false;
@@ -755,7 +870,9 @@ function c(obj) {
         focusInput();
         
         //Input check empty
-        checkInputEmpty();
+        $('input').each(function(){
+            checkInputEmpty($(this));
+        });
         
         staticPopup();
         
@@ -764,20 +881,21 @@ function c(obj) {
         });
         
         Waves.attach('.input_wrapper');
-        Waves.attach('.js-accordeon_head');
+//        Waves.attach('.js-accordeon_head');
         Waves.attach('.wave');
         Waves.init();
         
         if( $('.schedule_toggle-view_rail').size() > 0 ) scheduleToggle();
         
-        
-        
+        if( $('.timepicker').size() > 0 ){
+            cloockpiker($('.timepicker'));
+        }
         
         
     });
     
     $(window).load(function() {
-        $(".menu_wrapper").mCustomScrollbar();
+        if( $(".menu_wrapper").size() > 0 ) $(".menu_wrapper").mCustomScrollbar();
     });
 
 })(this);

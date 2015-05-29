@@ -21,13 +21,35 @@
     }
 }
 
-.edit-shift:hover, .remove-shift:hover{
+@include keyframes(input-highlight) {
+    0% {
+        background-size: 0 2px, 100% 2px;
+    }
+
+    100% {
+        background-size: 100% 2px, 100% 2px;
+    }
+}
+@include keyframes(input-highlight-small) {
+    0% {
+        background-size: 0 1px, 100% 1px;
+    }
+
+    100% {
+        background-size: 100% 1px, 100% 1px;
+    }
+}
+/*@keyframes input-highlight {
+  
+}*/
+
+/*.edit-shift:hover, .remove-shift:hover{
     @include animation-name(move);
     @include animation-duration(.3s);
     @include animation-fill-mode(both);
     @include animation-iteration-count(1);
     
-}
+}*/
 
 
 

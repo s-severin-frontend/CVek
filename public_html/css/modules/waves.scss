@@ -38,7 +38,6 @@
     -ms-user-select: none;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
-    
     .waves-ripple {
         position: absolute;
         border-radius: 50%;
@@ -78,6 +77,9 @@
     &.waves-classic.waves-light .waves-ripple {
         background: rgba(255,255,255,0.4);
     }
+}
+td.waves-effect{
+    display: table-cell;
 }
 
 .waves-notransition {

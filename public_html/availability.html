@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Digital Age</title>
+    <meta name="description" content="" />
+    <!--<meta name="viewport" content="width=1024, maximum-scale=2.0" />-->
+    <!--<link rel="shortcut icon" href="favicon.ico" />-->
+    <!--<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500&subset=latin,cyrillic' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=ru"></script>
+    <script type="text/javascript" src="js/select2.js"></script>
+    <script type="text/javascript" src="js/waves.js"></script>
+    <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery-clockpicker.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+</head>
+
+
+<body>
+    <nav>
+        <div class="logo_wrapper">
+            <a href="index.html" class="logo"></a>
+        </div>
+        <div class="nav_wrapper">
+            <ul>
+                <li class="nav_punkt_schedule"><a href="#"><i></i><span>Schedule</span></a></li>
+                <li class="nav_punkt_company"><a href="#"><i></i><span>Company</span></a></li>
+                <li class="nav_punkt_profile"><a href="#"><i></i><span>My Profile</span></a></li>
+                <li class="nav_punkt_availability active"><a href="#"><i></i><span>Availability</span></a></li>
+                <li class="nav_punkt_help"><a href="#"><i></i><span>Help</span></a></li>
+            </ul>
+            <div class="nav_pointer"></div>
+        </div>
+    </nav>
+    <header>
+        <form class="header_action">
+            <button class="header_button_ico plus"></button>
+            <button class="header_button_ico logout"></button>
+        </form>
+        <h1>Company</h1>
+    </header>
+    <div class="menu">
+        <button class="menu-toggle"></button>
+        <div class="menu_wrapper">
+            <section class="menu_filtr">
+                <ul class="company-navigate">
+                    <li><a href="#" class="active wave">Employees</a></li>
+                    <li><a href="#" class="wave">Positions</a></li>
+                    <li><a href="#" class="wave">Locations</a></li>
+                    <li><a href="#" class="wave">Shift Blocks </a></li>
+                </ul>
+            </section>
+            <hr />
+            <section class="menu_filtr">
+                <h3 class="menu_filtr_title">
+                    Locations
+                </h3>
+                <form class="js-accordeon city-filtr">
+                    <fieldset class="city-filtr-inside">
+                        <input type="checkbox" id="b1" /><label for="b1">Los Angeles</label>
+                    </fieldset>
+                    <fieldset class="city-filtr-inside">
+                        <input type="checkbox" id="b2" /><label for="b2">Chicago</label>
+                    </fieldset>
+                    <fieldset class="city-filtr-inside">
+                        <input type="checkbox" id="b3" /><label for="b3">Springfield</label>
+                    </fieldset>
+                    <fieldset class="city-filtr-inside">
+                        <input type="checkbox" id="b4" /><label for="b4">Lincoln</label>
+                    </fieldset>
+                    <div class="js-accordeon_body">
+                        <fieldset class="city-filtr-inside">
+                            <input type="checkbox" id="b5" /><label for="b5">Paris</label>
+                        </fieldset>
+                        <fieldset class="city-filtr-inside">
+                            <input type="checkbox" id="b6" /><label for="b6">London</label>
+                        </fieldset>
+                        <fieldset class="city-filtr-inside">
+                            <input type="checkbox" id="b7" /><label for="b7">Moskow</label>
+                        </fieldset>
+                    </div>
+                    <div class="js-accordeon_head acenter">
+                        More <i class="arrow"></i>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+    <div id="content">
+        <div class="saving hidden"><i><img src="img/load.gif" alt="..." /></i>Saved...</div>
+        
+        <h2 class="schedule_title">
+            My Availability
+        </h2>
+        
+        <div class="schedule_wrapper">
+            <table class="schedule capability availability">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>00</th>
+                        <th>01</th>
+                        <th>02</th>
+                        <th>03</th>
+                        <th>04</th>
+                        <th>05</th>
+                        <th>06</th>
+                        <th>07</th>
+                        <th>08</th>
+                        <th>09</th>
+                        <th>10</th>
+                        <th>11</th>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                        <th>21</th>
+                        <th>20</th>
+                        <th>23</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sunday</td>
+                        <td colspan="24"></td>
+                    </tr>
+                    <tr>
+                        <td >Monday</td>
+                        <td colspan="24">
+                            <div class="availabily-wrapper">
+                                <div class="field-complete color-e53935" style="margin-left: 0; width: 100%;">
+                                    All Day
+                                </div>
+                            </div>
+                            <div class="add-availabily">
+                                <div class="add-availabily-column avaliable">
+                                    <p><i class="avaliable-plus"></i> avaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div><!--
+                                --><div class="add-availabily-column unavaliable">
+                                    <p><i class="avaliable-plus"></i> unavaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="button-ok pull-right"><i></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td colspan="24">
+                            <div class="availabily-wrapper">
+                                <div class="field-complete color-43a047" style="margin-left: 0; width: 50%;">
+                                    00:00—12:00
+                                </div>
+                            </div>
+                            <div class="add-availabily">
+                                <div class="add-availabily-column avaliable">
+                                    <p><i class="avaliable-plus"></i> avaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div><!--
+                                --><div class="add-availabily-column unavaliable">
+                                    <p><i class="avaliable-plus"></i> unavaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="button-ok pull-right"><i></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td colspan="24">
+                            <div class="availabily-wrapper"></div>
+                            <div class="add-availabily">
+                                <div class="add-availabily-column avaliable">
+                                    <p><i class="avaliable-plus"></i> avaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div><!--
+                                --><div class="add-availabily-column unavaliable">
+                                    <p><i class="avaliable-plus"></i> unavaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="button-ok pull-right"><i></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td colspan="24">
+                            <div class="availabily-wrapper">
+                                <div class="field-complete color-43a047" style="margin-left: 0; width: 100%;">
+                                    All Day
+                                </div>
+                            </div>
+                            <div class="add-availabily">
+                                <div class="add-availabily-column avaliable">
+                                    <p><i class="avaliable-plus"></i> avaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div><!--
+                                --><div class="add-availabily-column unavaliable">
+                                    <p><i class="avaliable-plus"></i> unavaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="button-ok pull-right"><i></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td colspan="24">
+                            <div class="availabily-wrapper">
+                                <div class="field-complete color-43a047" style="margin-left: 46%; width: 50%;">
+                                    11:00—23:00
+                                </div>
+                            </div>
+                            <div class="add-availabily">
+                                <div class="add-availabily-column avaliable">
+                                    <p><i class="avaliable-plus"></i> avaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div><!--
+                                --><div class="add-availabily-column unavaliable">
+                                    <p><i class="avaliable-plus"></i> unavaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="button-ok pull-right"><i></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td colspan="24">
+                            <div class="availabily-wrapper"></div>
+                            <div class="add-availabily">
+                                <div class="add-availabily-column avaliable">
+                                    <p><i class="avaliable-plus"></i> avaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div><!--
+                                --><div class="add-availabily-column unavaliable">
+                                    <p><i class="avaliable-plus"></i> unavaliable</p>
+                                    <div class="add-availabily_time-interval duplicate-wrapper">
+                                        <div class="input_wrapper with-ico pull-left">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        <div class="input_wrapper with-ico pull-right">
+                                            <i class="ico_time"></i>
+                                            <input type="text" value="" class="timepicker duplicate" />
+                                        </div>
+                                        &mdash;
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <button class="button-ok pull-right"><i></i></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <footer>
+        <a href="#" class="pull-right">Developers</a>
+        Copyright © 2015 Company name Inc
+        <hr />
+        All Rights Reserved
+        <hr />
+        <a href="#">Terms of Service</a>
+        <hr />
+        <a href="#">Privacy Policy</a>
+    </footer>
+    
+    <form class="edit-work template">
+        <button class="edit-work_close pull-right"></button>
+        <h3>Assign Shift to John on Tue, Mar 31</h3>
+        <fieldset>
+            <label>Сhoose Shift Block</label>
+            <div class="select-wrapper" style="margin-left: 50px; min-width: 300px;">
+                <select id="sel">
+                    <option>8:00 — 20:00  Manager</option>
+                    <option>20:00 — 4:00  Manager</option>
+                </select>
+            </div>
+        </fieldset>
+        <p>Or create A Custom Shift</p>
+        <fieldset class="clearfix">
+            <div class="field-part pull-left smaller">
+                <label>Time</label>
+                <div class="input_wrapper with-ico">
+                    <i class="ico_time"></i>
+                    <input type="text" class="time-input" value="20:00">
+                </div>
+                <span class="mdash">&mdash;</span>
+                <div class="input_wrapper with-ico">
+                    <i class="ico_time"></i>
+                    <input type="text" class="time-input" value="8:00">
+                </div>
+            </div>
+            <div class="field-part pull-left smaller">
+                <label>Unpaid Break</label>
+                <div class="input_wrapper with-ico pull-left">
+                    <i class="ico_time"></i>
+                    <input type="text" class="time-input" value="i.e. 1 hr">
+                </div>
+            </div>
+            <div class="field-part pull-left smaller">
+                <label>Position</label>
+                <div class="select-wrapper">
+                    <select>
+                        <option>Manager</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field-part smaller">
+                <label>Location</label>
+                <div class="select-wrapper">
+                    <select>
+                        <option>Los Angeles</option>
+                        <option>Oklahoma</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="actions">
+            <button class="pull-right button-blue wave">Create & Publish</button>
+            <button class="pull-right button-blue wave">Create </button>
+            <input type="checkbox" value="" id="chee" /><label for="chee">Save As Shift Block</label>
+        </fieldset>
+    </form>
+    
+</body>
+</html>
+
+

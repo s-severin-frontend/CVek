@@ -41,7 +41,7 @@
     </nav>
     <header>
         <form class="header_action">
-            <button class="header_button_ico plus"></button>
+            <button class="header_button_ico plus add-row"></button>
             <button class="header_button_ico logout"></button>
         </form>
         <h1>Company</h1>
@@ -69,19 +69,19 @@
                 
                 <h2 class="company_header_name">
                     <span>Pizza Hut</span>
-                    <i class="ico_change-name radial-effect"></i>
+                    <i class="ico_change-name"></i>
                 </h2>
                 <div class="company_header_icons">
-                    <i class="ico_phone radial-effect" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
-                    <i class="ico_email radial-effect" title="<p>email: test@test.com</p>"></i>
-                    <i class="ico_geoposition radial-effect" title="<p>Coordinats</p>"></i>
+                    <i class="ico_phone" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
+                    <i class="ico_email" title="<p>email: test@test.com</p>"></i>
+                    <i class="ico_geoposition" title="<p>Coordinats</p>"></i>
                 </div>
             </section>
             <section class="company_positions company_data">
                 <div>
                     <h3>Positions</h3>
                     <div>
-                        <table class="company_data_table company_positions_table">
+                        <table class="company_data_table company_positions_table added-table">
                             <thead>
                                 <tr>
                                     <th></th>
@@ -91,6 +91,38 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr class="added-row">
+                                    <td>
+                                        <div class="company_position_color_select">
+                                            <label>Select Color</label>
+                                            <div class="select-wrapper">
+                                                <select class="select-color" aria-hidden="true">
+                                                    <option value="color-0e8db0">&nbsp;</option>
+                                                    <option value="color-1c72a3">&nbsp;</option>
+                                                    <option value="color-0e6f76">&nbsp;</option>
+                                                    <option value="color-147063">&nbsp;</option>
+                                                    <option value="color-3da081">&nbsp;</option>
+                                                    <option value="color-ed7425">&nbsp;</option>
+                                                    <option value="color-e84a1d">&nbsp;</option>
+                                                    <option value="color-8e410d">&nbsp;</option>
+                                                    <option value="color-8e3db8">&nbsp;</option>
+                                                    <option value="color-e16764">&nbsp;</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="company_position_name_wrapper">
+                                            <input type='text' value='' />
+                                            <label></label>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <i class="ico_remove-gray company_position_remove"></i>
+                                        <div class="button-ok"><i></i></div>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <div class="company_position_color color-0e8db0" data-color="color-0e8db0"></div>

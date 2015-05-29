@@ -18,31 +18,64 @@
     background-position: -14px -339px;
     height: 51px;
 }
+.nav_punkt_availability i{
+    background-position: -14px -425px;
+    height: 62px;
+    width: 54px;
+}
 
 .header_button_ico{
-    &.logout{ background-position: -225px center;}
-    &.delete{ background-position: -187px center;}
-    &.print{ background-position: -143px center;}
-    &.settings{ background-position: -95px center;}
-    &.add{ background-position: -46px center;}
-    &.plus{ background-position: 1px center;}
+    &.logout{ background-position: -225px 0;}
+    &.delete{ background-position: -187px 0;}
+    &.print{ background-position: -143px 0;}
+    &.settings{ background-position: -95px 0;}
+    &.add{ background-position: -46px 0;}
+    &.plus{ background-position: 1px 0;}
+    &.add-2{ background-position: -264px 0;}
+    
+    &.logout:active{ background-position: -225px -30px;}
+    &.delete:active{ background-position: -187px -30px;}
+    &.print:active{ background-position: -143px -30px;}
+    &.settings:active{ background-position: -95px -30px;}
+    &.add:active{ background-position: -46px -30px;}
+    &.plus:active{ background-position: 1px -30px;}
+    &.add-2:active{ background-position: -264px -30px;}
 }
 
 [class^=ico_]{
     background: url("../img/sprite.png") no-repeat;
     &.ico_phone{
-        background-position: 1px 0;
+        background-position: -30px -449px;
         border-radius: 0;
+        &:hover:not(.disabled), &.active{
+            background-position: 1px 0;
+        }
+        &.disabled{
+            opacity: .3;
+            cursor: default;
+        }
     }
     &.ico_change-name{background-position: 1px -45px;}
-    &.ico_change-password{background-position: 1px -85px;}
+    &.ico_change-password{
+        background-position: 1px -85px;
+        &:hover, &.active{
+            background-position: -33px -415px;
+        }
+    }
     &.ico_email{
         background-position: 0 -128px;
         border-radius: 0;
+        &:hover:not(.disabled), &.active{
+            background-position: 0 -450px;
+        }
+        &.disabled{
+            opacity: .3;
+            cursor: default;
+        }
     }
     &.ico_time{
-        background-position: -35px -84px;
-        width: 25px;
+        background-position: -2px -416px;
+        width: 30px;
     }
     &.ico_select-day{
         background-position: -32px 0;
@@ -55,6 +88,13 @@
     &.ico_geoposition{
         background-position: 0 -213px;
         border-radius: 0;
+        &:hover:not(.disabled), &.active{
+            background-position: -30px -213px;
+        }
+        &.disabled{
+            opacity: .3;
+            cursor: default;
+        }
     }
     &.ico_remove-gray, &.ico_edit-gray, &.ico_available, &.ico_schedule{
         @include square(21px);
