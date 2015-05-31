@@ -18,7 +18,7 @@ function c(obj) {
                 .animate({
                     'opacity': 1
                 }, 500);
-        $(document).on('mouseenter', 'nav li', function(e) {
+        $(document).on('click', 'nav li', function(e) {
             var top = $(this).position().top,
                 height = $(this).outerHeight();
             $pointer.stop().animate({
@@ -26,12 +26,20 @@ function c(obj) {
                 'height': height
             }, 500);
         });
-        $(document).on('mouseleave', 'nav', function(e) {
-            $pointer.stop().animate({
-                'top': $active_punkt.position().top,
-                'height': $active_punkt.outerHeight()
-            }, 500);
-        });
+//        $(document).on('mouseenter', 'nav li', function(e) {
+//            var top = $(this).position().top,
+//                height = $(this).outerHeight();
+//            $pointer.stop().animate({
+//                'top' : top,
+//                'height': height
+//            }, 500);
+//        });
+//        $(document).on('mouseleave', 'nav', function(e) {
+//            $pointer.stop().animate({
+//                'top': $active_punkt.position().top,
+//                'height': $active_punkt.outerHeight()
+//            }, 500);
+//        });
     } 
     
     function l_tooltip(target_items, name) {
@@ -83,6 +91,7 @@ function c(obj) {
         checkInputEmpty(self);
     });
     
+   
     function staticPopup(){
         $(document).on('click', '.popup-open', function(e) {
             if( $('.popup.open').size() > 0 ) closePopUp();
@@ -113,6 +122,7 @@ function c(obj) {
                     $(document).unbind('keydown');
                 }
             });
+            $(document).on('click', '.popup .edited-clear', closePopUp);
             return false;
         });
         function closePopUp(){
@@ -133,12 +143,20 @@ function c(obj) {
         }
     }
     
-    function changeName() {
+    function changeName($button) {
+        $button.addClass('hidden');
         var $name = $(".profile_header_name > span");
-        $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
+        var old_val = $name.text();
+        $name.replaceWith("<input type='text' value='" + old_val + "' data-old='" + old_val + "' />");
         var $input = $(".profile_header_name > input");
+        checkInputEmpty($input);
+        $input.wrap('<span class="form-group"></span>');
+        var $input_wrap = $input.parent('.form-group');
+        $input_wrap.append('<label class="form-group_label">Name</label><i class="edited-save"></i><i class="edited-clear"></i>');
         $input.focus();
-        $input.on('blur', changeNameSave);
+//        $input.on('blur', changeNameSave);
+        $input_wrap.on('click', '.edited-save', changeNameSave);
+        $input_wrap.on('click', '.edited-clear', canselSave);
         $(document).on('keydown', function(e) {
                 if (e.keyCode === 13) {
                     e.preventDefault();
@@ -146,11 +164,17 @@ function c(obj) {
                 }
             });
         function changeNameSave(){
-            $input.replaceWith("<span>" + $input.val() + "</span>");
+            $button.removeClass('hidden');
+            $input_wrap.replaceWith("<span>" + $input.val() + "</span>");
+            $input.unbind('keydown');
+        }
+        function canselSave(){
+            $button.removeClass('hidden');
+            $input_wrap.replaceWith("<span>" + $input.data('old') + "</span>");
             $input.unbind('keydown');
         }
     }
-    $(document).on('click', '.ico_change-name', changeName);
+    $(document).on('click', '.ico_change-name', function(){ changeName($(this)); });
     
     //Аккордион
     function accordeon(self){
@@ -159,6 +183,13 @@ function c(obj) {
         if( self.hasClass('away-parent') ){
             acc_block = self.parents('.js-accordeon');
             acc_body = acc_block.find('.js-accordeon_body');
+        }
+        if( self.parents('.company_locations_city').size() > 0 ){
+            if( self.hasClass('from-smap') ){
+                self.removeClass('from-smap')
+            }else{
+                acc_block.find('.company_show-map').addClass('from-accordeon').click();
+            }
         }
         var list = acc_body.children().get();
         if( !self.hasClass('active') ){
@@ -417,8 +448,8 @@ function c(obj) {
     }
     function revertCell(cell){
         var cell_styling = {
-            "text-align": "left",
-            "vertical-align": "top",
+            "text-align": "",
+            "vertical-align": "",
             "background": ""
         }
         cell.css(cell_styling);
@@ -500,6 +531,13 @@ function c(obj) {
     $(document).on('click', '.company_show-map', function() {
         var $el = $(this).parent('.company_map-wrapper').find('.company_map');
         
+        //acc_block.find('.company_show-map').addClass('from-accordeon').click();
+        if( $(this).hasClass('from-accordeon') ){
+            $(this).removeClass('from-accordeon')
+        }else{
+            $(this).parents('tbody').find('.js-accordeon_head').addClass('from-smap').click();
+        }
+        
         if( !$(this).hasClass('active') ){
             $(this).addClass('active');
             if( !$el.hasClass('map-create') ) {
@@ -524,9 +562,6 @@ function c(obj) {
             $(this).removeClass('active');
             $el.slideUp(50);
         }
-        
-        
-
         return false;
     });
     
@@ -551,7 +586,6 @@ function c(obj) {
     });
     
     function renameLocation( $button ) {
-        c('tut');
         var $location = $button.parents('.company_locations_city'),
             $name = $location.find('em'),
             placeholder = $name.data('placeholder');
@@ -562,7 +596,7 @@ function c(obj) {
         var $inp_wrap = $input.parent('.form-group');
         checkInputEmpty($input);
         $input.after("<label class='form-group_label'>" + placeholder + "</label>");
-        $inp_wrap.append('<i class="edited-save"></i>');
+        $inp_wrap.append('<i class="edited-save"></i><i class="edited-clear"></i>');
         $input.focus();
 //        $input.on('blur', renameLocationSave);
         $inp_wrap.on('click', '.edited-save', renameLocationSave);
@@ -588,16 +622,18 @@ function c(obj) {
             $name = $address.find('em'),
             placeholder = $name.data('placeholder');
         $address.find('.ico_small-pointer').addClass('hidden');
-        $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
+        var old_val = $name.text();
+        $name.replaceWith("<input type='text' value='" + old_val + "' data-old='" + old_val + "' />");
         var $input = $address.find("input");
         $input.wrap('<div class="form-group smaller"></div>');
         var $inp_wrap = $input.parent('.form-group');
         checkInputEmpty($input);
         $input.after("<label class='form-group_label'>" + placeholder + "</label>");
-        $inp_wrap.append('<i class="edited-save"></i>');
+        $inp_wrap.append('<i class="edited-save"></i><i class="edited-clear"></i>');
         $input.focus();
 //        $input.on('blur', renameAddressSave);
         $inp_wrap.on('click', '.edited-save', renameAddressSave);
+        $inp_wrap.on('click', '.edited-clear', canselSave);
         $(document).on('keydown', function(e) {
                 if (e.keyCode === 13) {
                     e.preventDefault();
@@ -606,7 +642,13 @@ function c(obj) {
             });
         function renameAddressSave(){
             $input.next("label").remove();
-            $inp_wrap.replaceWith("<em>" + $input.val() + "</em>");
+            $inp_wrap.replaceWith("<em data-placeholder='Address'>" + $input.val() + "</em>");
+            $address.find('.ico_small-pointer').removeClass('hidden');
+            $input.unbind('keydown');
+        }
+        function canselSave(){
+            $input.next("label").remove();
+            $inp_wrap.replaceWith("<em data-placeholder='Address'>" + $input.data('old') + "</em>");
             $address.find('.ico_small-pointer').removeClass('hidden');
             $input.unbind('keydown');
         }
@@ -635,26 +677,33 @@ function c(obj) {
                         </div>';
         var $position = $button.parents('tr'),
             $name = $position.find('.company_position_name');
-        $button.hide().after('<i class="company_position_save"></i>');
-        $position.find('.ico_remove-gray').addClass('hidden');
-        $name.replaceWith("<input type='text' value='" + $name.text() + "' />");
+        $position.find('.ico_remove-gray, .company_position_edit').addClass('hidden');
+        var old_val = $name.text();
+        $name.replaceWith("<input type='text' value='" + old_val + "' data-old='" + old_val + "' />");
         var $input = $position.find("input[type='text']");
-        $input.after("<label></label>");
+        $input.wrap('<div class="form-group smaller"></div>');
+        var $input_wrap = $input.parent('.form-group');
+        checkInputEmpty($input);
+        $input.after('<label>Position</label><i class="edited-save"></i><i class="edited-clear"></i>');
         var $color = $position.find('.company_position_color'),
             color = $color.attr('data-color');
         $color.hide().after( select_html );
         var $select = $position.find('select');
         $select.find('[value=' + color + ']').attr('selected','selected');
         select($select);
-        $(document).on('click', '.company_position_save', function() {
-            positionEditSave($(this));
-        });
+        $(document).on('click', '.company_positions .edited-save', positionEditSave);
+        $(document).on('click', '.company_positions .edited-clear', positionCanselSave);
         $input.focus();
         function positionEditSave(){
-            $button.show().next('.company_position_save').remove();
-            $position.find('.ico_remove-gray').removeClass('hidden');
-            $input.next("label").remove();
-            $input.replaceWith("<span class='company_position_name'>" + $input.val() + "</span>");
+            $position.find('.ico_remove-gray, .company_position_edit').removeClass('hidden');
+            //$input.next("label").remove();
+            $input_wrap.replaceWith("<span class='company_position_name'>" + $input.val() + "</span>");
+            color = $select.val();
+            $color.removeClassWild("color-*").addClass(color).attr('data-color', color).show().nextAll('div').remove();
+        }
+        function positionCanselSave(){
+            $position.find('.ico_remove-gray, .company_position_edit').removeClass('hidden');
+            $input_wrap.replaceWith("<span class='company_position_name'>" + $input.data('old') + "</span>");
             color = $select.val();
             $color.removeClassWild("color-*").addClass(color).attr('data-color', color).show().nextAll('div').remove();
         }
@@ -746,17 +795,26 @@ function c(obj) {
     
     function empoloyeEdit( trigger ){
         var $line = trigger.parents('tr').next();
-        if( !trigger.hasClass('active') ){
-            trigger.addClass('active');
-            $line.find('.inner-info[data-type="employees_profile"]').stop().slideDown(200);
-        }else{
-            trigger.removeClass('active');
-            $line.find('.inner-info[data-type="employees_profile"]').stop().slideUp(50);
-        }
+//        if( !trigger.hasClass('active') ){
+//            trigger.addClass('active');
+//            $line.find('.inner-info[data-type="employees_profile"]').stop().slideDown(200);
+//        }else{
+//            trigger.removeClass('active');
+//            $line.find('.inner-info[data-type="employees_profile"]').stop().slideUp(50);
+//        }
+        trigger.addClass('hidden').after('<i class="edited-save company_employees_save"></i>');
+        $line.find('.inner-info[data-type="employees_profile"]').stop().slideDown(200);
         $(document).on('click', '.employees_profile_close', function(){
-            $(this).parents('tr').prev().find('.company_employees_edit').removeClass('active');
+            $(this).parents('tr').prev().find('.company_employees_edit').removeClass('hidden').next('.company_employees_save').remove();
             $(this).parents('.inner-info').stop().slideUp(50);
             $('.employees_profile_close').unbind('click');
+            return false;
+        });
+        $(document).on('click', '.company_employees_save', function(){
+            $(this).prev('.company_employees_edit').removeClass('hidden');
+            $(this).parents('tr').next().find('.inner-info[data-type="employees_profile"]').stop().slideUp(50);
+            $(this).remove();
+            $('.company_employees_save').unbind('click');
             return false;
         });
         return false;
@@ -880,7 +938,7 @@ function c(obj) {
             select( $(this) );
         });
         
-        Waves.attach('.input_wrapper');
+//        Waves.attach('.input_wrapper');
 //        Waves.attach('.js-accordeon_head');
         Waves.attach('.wave');
         Waves.init();
@@ -890,7 +948,19 @@ function c(obj) {
         if( $('.timepicker').size() > 0 ){
             cloockpiker($('.timepicker'));
         }
-        
+        if( $('.loading').size() > 0) {
+            preloader = new $.materialPreloader({
+                position: 'top',
+                height: '5px',
+                col_1: '#12668e',
+                col_2: '#2678a0',
+                col_3: '#3d9ac7',
+                col_4: '#03a9f4',
+                fadeIn: 200,
+                fadeOut: 200
+            });
+            preloader.on();
+        }
         
     });
     
@@ -908,3 +978,8 @@ function c(obj) {
         });
     };
 })(jQuery);
+
+(function($) {
+    
+})(jQuery);
+

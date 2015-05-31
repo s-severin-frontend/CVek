@@ -17,12 +17,13 @@
     <script type="text/javascript" src="js/waves.js"></script>
     <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/materialPreloader.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
 
 </head>
 
 
-<body>
+<body class="loading">
     <nav>
         <div class="logo_wrapper">
             <a href="index.html" class="logo"></a>
@@ -38,17 +39,6 @@
             <div class="nav_pointer"></div>
         </div>
     </nav>
-    <header>
-        <form class="header_action">
-            <!--<button class="header_button_ico plus"></button>
-            <button class="header_button_ico add"></button>-->
-            <button class="header_button_ico settings"></button>
-            <button class="header_button_ico print"></button>
-            <button class="header_button_ico delete"></button>
-            <button class="header_button_ico logout"></button>
-        </form>
-        <h1>Schedule</h1>
-    </header>
     <div class="menu">
         <button class="menu-toggle"></button>
         <div class="menu_wrapper">
@@ -82,7 +72,7 @@
                         </fieldset>
                     </div>
                     <div class="js-accordeon_head acenter">
-                        More <i class="arrow"></i>
+                        <span class="show-text">More</span><span class="hide-text">Less</span> <i class="arrow"></i>
                     </div>
                 </form>
             </section>
@@ -167,12 +157,23 @@
                         </fieldset>
                     </div>
                     <div class="js-accordeon_head acenter">
-                        More <i class="arrow"></i>
+                        <span class="show-text">More</span><span class="hide-text">Less</span> <i class="arrow"></i>
                     </div>
                 </form>
             </section>
         </div>
     </div>
+    <header>
+        <form class="header_action">
+            <!--<button class="header_button_ico plus"></button>
+            <button class="header_button_ico add"></button>-->
+            <button class="header_button_ico settings"></button>
+            <button class="header_button_ico print"></button>
+            <button class="header_button_ico delete"></button>
+            <button class="header_button_ico logout"></button>
+        </form>
+        <h1>Schedule</h1>
+    </header>
     <div id="content">
         <div class="saving hidden"><i><img src="img/load.gif" alt="..." /></i>Saved...</div>
         
@@ -215,14 +216,14 @@
                         <td>
                             <div>
                                 <p>16:00 — 20:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td></td>
                         <td>
                             <div>
                                 <p>16:00 — 20:00</p>
-                                <p>Courier</p>
+                                <p><small>Courier</small></p>
                             </div>
                         </td>
                         <td></td>
@@ -243,19 +244,19 @@
                         <td class="color-d98b8b">
                             <div class="field-complete color-d98b8b">
                                 <p>4:00 — 16:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td class="color-e84a1d">
                             <div class="field-complete color-e84a1d">
                                 <p>4:00 — 16:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td class="color-e84a1d">
                             <div class="field-complete color-e84a1d">
                                 <p>8:00 — 20:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td class="field-desired">
@@ -291,13 +292,13 @@
                         <td class="color-e84a1d">
                             <div class="field-complete color-e84a1d">
                                 <p>8:00 — 20:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td class="color-e84a1d">
                             <div class="field-complete color-e84a1d">
                                 <p>8:00 — 20:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td></td>
@@ -334,13 +335,13 @@
                         <td class="color-8bb6cf">
                             <div class="field-complete color-8bb6cf">
                                 <p>16:00 — 4:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                         <td class="color-8bb6cf">
                             <div class="field-complete color-8bb6cf">
                                 <p>16:00 — 4:00</p>
-                                <p>Manager</p>
+                                <p><small>Manager</small></p>
                             </div>
                         </td>
                     </tr>
@@ -358,19 +359,19 @@
                         <td class="color-0e8db0">
                             <div class="field-complete color-0e8db0">
                                 <p>8:00 — 16:00</p>
-                                <p>Courier</p>
+                                <p><small>Courier</small></p>
                             </div>
                         </td>
                         <td class="color-0e8db0">
                             <div class="field-complete color-0e8db0">
                                 <p>8:00 — 16:00</p>
-                                <p>Courier</p>
+                                <p><small>Courier</small></p>
                             </div>
                         </td>
                         <td class="color-0e8db0">
                             <div class="field-complete color-0e8db0">
                                 <p>11:00 — 23:00</p>
-                                <p>Courier</p>
+                                <p><small>Courier</small></p>
                             </div>
                         </td>
                         <td></td>
@@ -382,13 +383,13 @@
                         <td class="color-1c72a3">
                             <div class="field-complete color-1c72a3">
                                 <p>16:00 — 4:00</p>
-                                <p>Cook</p>
+                                <p><small>Cook</small></p>
                             </div>
                         </td>
                         <td class="color-1c72a3">
                             <div class="field-complete color-1c72a3">
                                 <p>16:00 — 4:00</p>
-                                <p>Cook</p>
+                                <p><small>Cook</small></p>
                             </div>
                         </td>
                         <td></td>

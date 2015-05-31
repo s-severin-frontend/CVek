@@ -102,14 +102,35 @@
                     <input type="file" title="Load new photo" />
                 </div>
                 
-                <h2 class="company_header_name">
+                <h2 class="company_header_name profile_header_name">
                     <span>Pizza Hut</span>
-                    <i class="ico_change-name"></i>
+                    <i class="ico_change-name" title="Change name"></i>
                 </h2>
                 <div class="company_header_icons">
-                    <i class="ico_phone" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
-                    <i class="ico_email" title="<p>email: test@test.com</p>"></i>
-                    <i class="ico_geoposition" title="<p>Coordinats</p>"></i>
+                    <i class="ico_phone popup-open" data-popup="phones-popup" title="Phone number"></i>
+                    <div class="popup inline-view" id="phones-popup">
+                        <div class="form-group">
+                            <input type="text" value="+1-831-851-0444" />
+                            <label class="form-group_label">Phone</label>
+                            <i class="edited-save"></i><i class="edited-clear"></i>
+                        </div>
+                    </div> 
+                    <i class="ico_email popup-open" data-popup="email-popup" title="Company email"></i>
+                    <div class="popup inline-view" id="email-popup">
+                        <div class="form-group">
+                            <input type="text" value="mail@mail.com" />
+                            <label class="form-group_label">Email</label>
+                            <i class="edited-save"></i><i class="edited-clear"></i>
+                        </div>
+                    </div> 
+                    <i class="ico_geoposition popup-open" title="Coordinats" data-popup="geoposition-popup"></i>
+                    <div class="popup inline-view" id="geoposition-popup">
+                        <div class="form-group">
+                            <input type="text" value="22 22" />
+                            <label class="form-group_label">Geocoordinates</label>
+                            <i class="edited-save"></i><i class="edited-clear"></i>
+                        </div>
+                    </div> 
                 </div>
             </section>
             <section class="company_shifts company_data">

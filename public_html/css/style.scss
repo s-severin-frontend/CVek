@@ -6,6 +6,7 @@
         "modules/jquery.mCustomScrollbar.css",
         "modules/jquery-ui.css",
         "modules/jquery-clockpicker.css",
+        "modules/materialPreloader.css",
         "animate";
 
 ::-moz-selection {background: #607d8b; color:#ebeff2;}
@@ -126,13 +127,7 @@ header{
                 border-radius: 50%;
                 opacity: 0;
                 z-index: -1;
-                /*box-shadow: 0 0 0 7px #214955, 0 0 1px 12px #506874;*/
-                /*@include transition(box-shadow, .3s, ease-out);*/
             }
-/*            &:hover:after{
-                opacity: 1;
-                box-shadow: 0 0 0 1px #516975, 0 0 0 0 #506874;
-            }*/
         }
         
     }
@@ -141,6 +136,13 @@ header{
         line-height: 60px;
     }
 	
+}
+.menu ~ header{
+    @include box-shadow(80px 3px 5px rgba(0, 0, 0, 0.4), 115px 5px 5px rgba(0, 0, 0, 0.2));
+    @include transition(box-shadow, 0.2s, ease-out);
+}
+.menu.active ~ header{
+    @include box-shadow(80px 3px 5px rgba(0, 0, 0, 0.4), 295px 5px 5px rgba(0, 0, 0, 0.2));
 }
 footer{
     position: relative;
@@ -380,7 +382,7 @@ input[type="radio"]{
 
 
 .profile_header{
-    padding: 63px 0 0 145px;
+    padding: 38px 0 0 145px;
     h2{
         color: #607d8b;
     }
@@ -388,7 +390,7 @@ input[type="radio"]{
 .profile_header_avatar{
     float: left;
     position: relative;
-    margin: -36px 23px 0 -145px;
+    margin: -11px 23px 0 -145px;
     @include square(122px);
     overflow: hidden;
     border-radius: 50%;
@@ -410,7 +412,7 @@ input[type="radio"]{
     }
 }
 .profile_header_icons{ 
-    margin: 20px 0 0;
+    margin: 15px 0 0;
     i{
         margin-right: 10px;
     }
@@ -423,17 +425,16 @@ input[type="radio"]{
 .profile_header_name i{
     cursor: pointer;
 }
-.profile_header_name input[type="text"]{
-    background: none;
-    border: none;
-    outline: none;
-    box-shadow: none;
-    font-weight: 300;
-    padding: 0;
-    height: 54px;
+.profile_header_name .form-group{
+    width: 375px;
     display: inline-block;
-    vertical-align: baseline;
-    line-height: 54px;
+    vertical-align: top;
+    margin-top: -3px;
+    input{
+        width: 80%;
+        font-size: 36px;
+        font-weight: 300;
+    }
 }
 
 .profile_header_change-password{
@@ -446,13 +447,13 @@ input[type="radio"]{
         top: 35px;
         padding: 10px 3px;
         background: #cfd8dc;
-        .input_wrapper{
+        .form-group{
             margin: 12px 18px 13px;
             width: 165px;
             display: inline-block;
-            input{
+/*            input{
                 border-bottom: 2px solid #b8b8b8;
-            }
+            }*/
         }
         .popup_title {
             text-align: center;
@@ -464,6 +465,9 @@ input[type="radio"]{
         margin: 15px 20px 20px;
     }
 }
+.profile_save .button-ok{
+    @include drop-shadow(2);
+}
 
 #phones-popup, #email-popup, #geoposition-popup{
     background: none;
@@ -471,9 +475,18 @@ input[type="radio"]{
     position: relative;
     overflow: visible;
     vertical-align: top;
-    width: 170px;
+    width: 225px;
     padding: 0;
     margin: -8px 10px 0 0;
+    .form-group{
+        width: 230px;
+        input {
+            width: 150px;
+        }
+        i {
+             margin-right: inherit; 
+        }
+    }
 }
 
 $column_space: 95px;
@@ -736,6 +749,9 @@ $column_space: 95px;
         &.active .hide-text{
             display: inline;
         }
+        .hide-text, .show-text{
+            margin-left: -25px;
+        }
     }
 }
 
@@ -842,6 +858,9 @@ $column_space: 95px;
                 margin: 5px 0;
             }
         }
+        &.field-desired{
+            text-align: center;
+        }
     }
     thead th{
         background: #e9ecee;
@@ -873,8 +892,11 @@ $column_space: 95px;
         }
     }
     p{
-        font-size: 14px;
+        font-size: 16px;
         line-height: 20px;
+        small{
+            font-size: 14px;
+        }
     }
 }
 .schedule_person{
@@ -1208,6 +1230,7 @@ $column_space: 95px;
     @include square(50px);
     border-radius: 50%;
     @include drop-shadow(1);
+    @include box-shadow(2px 5px 5px rgba(0,0,0,.57));
     background: #03a9f4;
     &:before{
         content: "";
@@ -1250,12 +1273,16 @@ $column_space: 95px;
                 background: #687e8a;
             }
         }
+        &.active a{
+            color: #fff;
+            background: #687e8a;
+        }
     }
 }
 
 
 .company_header{
-    padding: 63px 0 0 145px;
+    padding: 43px 0 0 145px;
     margin-bottom: 40px;
     h2{
         color: #607d8b;
@@ -1264,7 +1291,7 @@ $column_space: 95px;
 .company_header_avatar{
     float: left;
     position: relative;
-    margin: -36px 23px 0 -145px;
+    margin: -16px 23px 0 -145px;
     @include size(127px, 125px);
     overflow: hidden;
     img{
@@ -1283,6 +1310,9 @@ $column_space: 95px;
         cursor: pointer;
     }
 }
+.company_header_icons{
+    margin: 15px 0 0;
+}
 .company_header_icons i{
     margin-right: 10px;
 }
@@ -1294,7 +1324,7 @@ $column_space: 95px;
 .company_header_name i{
     cursor: pointer;
 }
-.company_header_name input[type="text"]{
+/*.company_header_name input[type="text"]{
     background: none;
     border: none;
     outline: none;
@@ -1305,7 +1335,7 @@ $column_space: 95px;
     display: inline-block;
     vertical-align: baseline;
     line-height: 54px;
-}
+}*/
 .company_locations h3, .company_position h3, .company_data h3{
     font-size: 30px;
     color: #607d8b;
@@ -1351,37 +1381,9 @@ $column_space: 95px;
 .company_locations_city em{
     font-style: normal;
 }
-/*.company_locations_city input[type="text"]{
-    border: none;
-    box-shadow: none;
-    outline: none;
-    height: 22px;
-    line-height: 22px;
-    position: relative;
-    & + label{
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 1px;
-        left: 0;
-        bottom: 0;
-    }
-    & + label:before{
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        @include transition(all, .2s, ease);
-        @include size(0px, 2px);
-        background: #607d8b;
-        margin: 0;
-        display: block;
-    }
-    &:focus + label:before{
-        width: 100%;
-        margin-left: -50%;
-    }
-}*/
+.company_locations_city input[type="text"]{
+    max-width: 90%;
+}
 .company_locations_city td{
     padding: 35px 20px;
 }
@@ -1437,6 +1439,10 @@ $column_space: 95px;
     &:hover .ico_small-pointer, &.active .ico_small-pointer{
         display: inline-block;
         opacity: 1;
+    }
+    .form-group{
+        max-width: 55%;
+        white-space: nowrap;
     }
 }
 .company_map-wrapper{
@@ -1598,7 +1604,7 @@ $column_space: 95px;
     th, td{
         &:first-child{
             width: 105px;
-            text-align: center;
+            text-align: left;
         }
         &:first-child + *{
             width: 80%;
@@ -1617,55 +1623,17 @@ $column_space: 95px;
             }
         }
     }
+    .added-row td{
+        padding: 20px !important;
+    }
+    .form-group {
+        white-space: nowrap;
+    }
 }
 .company_position_name_wrapper{
     display: inline-block;
     width: auto;
     position: relative;
-    input[type="text"]{
-        background: none;
-        border: none;
-        box-shadow: none;
-        outline: none;
-        height: 24px;
-        font-size: 18px;
-        line-height: 26px;
-        width: auto;
-        min-width: 125px;
-        position: relative;
-        & + label{
-            position: absolute;
-            display: block;
-            width: 100%;
-            height: 1px;
-            left: 0;
-            bottom: 0;
-        }
-        & + label:before{
-            content: "Edit Address";
-            position: absolute;
-            top: -38px;
-            left: 0;
-            display: block;
-            color: #03a9f4;
-            font-size: 11px;
-        }
-        & + label:after{
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            @include transition(all, .2s, ease);
-            @include size(0px, 1px);
-            background: #03a9f4;
-            margin: 0;
-            display: block;
-        }
-        &:focus + label:after{
-            width: 100%;
-            margin-left: -50%;
-        }
-    }
 }
 .company_position_color, .company_shifts_color{
     display: inline-block;
@@ -1681,7 +1649,7 @@ $column_space: 95px;
         display: block;
         width: 100%;
         height: 1px;
-        left: -8px;
+        left: 0;
         top: -12px;
         color: #03a9f4;
         font-size: 11px;
@@ -1690,10 +1658,14 @@ $column_space: 95px;
         width: 75px;
     }
     .select2-container .select2-selection--single {
-        height: 25px;
+        height: 29px;
+        border-bottom: 1px solid #b8b8b8;
+    }
+    .company_position_color_select .select2-container.select2-container--open .select2-selection--single {
+        border-bottom-color: #03a5ee;
     }
     .select2-container--default .select2-selection--single .select2-selection__arrow {
-        height: 25px;
+        height: 29px;
     }
     .select2-container--default .select2-selection--single .select2-selection__arrow b {
         border-width: 5px 5px 0 5px;
@@ -1710,7 +1682,7 @@ $column_space: 95px;
         display: inline-block;
         vertical-align: middle;
         width: 100%;
-        margin: 0;
+        margin: 7px 0 0;
     }
 
 }
@@ -1728,6 +1700,7 @@ $column_space: 95px;
     margin-top: -5px;
     display: inline-block;
     vertical-align: middle;
+    z-index: 2;
     cursor: pointer;
     @include transition(all, .2s, linear);
     &:hover{
@@ -1781,7 +1754,7 @@ $column_space: 95px;
             width: 105px;
             text-align: left;
             white-space: nowrap;
-            label{
+            [type="checkbox"] + label{
                 margin-right: 10px;
                 @include square(16px);
                 vertical-align: middle;
@@ -1798,7 +1771,7 @@ $column_space: 95px;
         &:last-child{
             padding: 20px 15px;
             white-space: nowrap;
-            max-width: 200px;
+            width: 180px;
             i{
                 margin: 0 13px;
             }
@@ -1962,6 +1935,7 @@ $column_space: 95px;
     position: relative;
     background: #cfd8dc;
     padding: 18px 0;
+      min-height: 240px;
     .js-tabs_body{
         margin-left: 201px;
         border-left: 1px solid #727272;
@@ -2013,30 +1987,18 @@ $column_space: 95px;
         display: inline-block;
         vertical-align: top;
         width: 200px;
-        height: 35px;
-        margin: 10px 25px 35px;
+        margin: 10px 25px 25px;
         position: relative;
-        border-bottom: 2px solid #607d8b;
-        &.has-error{
-            border-bottom-color: #f44336;
+        input {
+            line-height: 42px;
+            height: 40px;
+            font-weight: 300;
         }
-        label{
-            position: absolute;
-            left: 0;
-            top: -15px;
-            color: #607d8b;
-            font-size: 11px;
-            width: auto !important;
+        input + label {
+            line-height: 42px;
         }
-        [type="text"]{
-            background: none;
-            border: none;
-            outline: none;
-            padding: 0;
-            box-shadow: none;
-            width: 100%;
-            line-height: 36px;
-            height: 35px;
+        input:focus + label, input.no-empty + label {
+            line-height: 24px;
         }
     }
 }
@@ -2049,12 +2011,12 @@ p.employees_edit_profile_privilegies{
 fieldset.employees_edit_profile_privilegies{
     display: inline-block;
     vertical-align: middle;
-    margin: 2px 40px 10px 0;
+    margin: 10px 40px 10px 0;
     label{
         width: auto !important;
         color: #222;
         &:before {
-            margin-top: -9px;
+            margin-top: -13px;
         }
     }
 }
@@ -2152,22 +2114,6 @@ fieldset.employees_edit_profile_privilegies{
 .employees_location_punkt_remove{
     &:before, &:after{
         background: #222;
-    }
-}
-.company_employees_edit.active{
-    border-width: 3px;
-    border-color: #3dbaf3;
-    border-style: none none solid solid;
-    @include size(22px, 9px);
-    background: none;
-    @include rotate(-50deg);
-    margin-top: -5px;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    @include transition(all, .2s, linear);
-    &:hover{
-        @include rotate(-45deg);
     }
 }
 
@@ -2425,6 +2371,43 @@ fieldset.employees_edit_profile_privilegies{
         @include transition(.2s ease all);
         display: block;
     }
+    &.smaller{
+        input{
+            line-height: 32px;
+            height: 30px;
+            font-size: 16px;
+            background-size: 0 1px,100% 1px;
+            & + label{
+                font-size: 16px;
+                line-height: 32px;
+            }
+            &:focus + label, &.no-empty + label{
+                font-size: 12px;
+                line-height: 24px;
+            }
+        }
+        input:focus{
+            background-size: 0 1px,100% 1px;
+            @include animation(input-highlight-small .5s forwards);
+        }
+    }
+    &.darkness{
+        input{
+            color: #222;
+            background-image: linear-gradient(#03a5ee,#03a5ee),linear-gradient(#607d8b,#607d8b);
+            
+            &:focus{
+                background-image: linear-gradient(#03a5ee,#03a5ee),linear-gradient(#607d8b,#607d8b);
+                @include animation(input-highlight .5s forwards);
+            }
+            & + label{
+                color: #607d8b;
+            }
+            &:focus + label{
+                color: #03a5ee;
+            }
+        }
+    }
     &.has-error{
         input{
             background-image: linear-gradient(#f44336,#f44336),linear-gradient(#b8b8b8,#b8b8b8);
@@ -2437,29 +2420,38 @@ fieldset.employees_edit_profile_privilegies{
             color: #f44336;
         }
     }
-    &.smaller{
-        input{
-            line-height: 32px;
-            height: 30px;
-            font-size: 16px;
-            & + label{
-                font-size: 16px;
-                line-height: 32px;
-            }
-            &:focus + label, &.no-empty + label{
-                font-size: 12px;
-                line-height: 24px;
-            }
-        }
-        input, input:focus{
-            background-size: 0 1px,100% 1px;
-            @include animation(input-highlight-small .5s forwards);
-        }
-    }
 }
 
-
-
+.edited-clear{
+    cursor: pointer;
+    @include square(16px);
+    vertical-align: middle;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    margin: 0 10px;
+    &:before,&:after{
+        display: block;
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
+        background: #727272;
+        border: none;
+        @include transition(all, .2s, linear);
+    }
+    &:before{
+        @include size(18px, 2px);
+        margin-left: -8px;
+    }
+    &:after{
+        @include size(2px, 18px);
+        margin-top: -8px;
+    }
+    &:before,&:after{
+        @include rotate(45deg);
+    }
+}
 
 
 

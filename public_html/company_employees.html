@@ -103,14 +103,35 @@
                     <input type="file" title="Load new photo" />
                 </div>
                 
-                <h2 class="company_header_name">
+                <h2 class="company_header_name profile_header_name">
                     <span>Pizza Hut</span>
-                    <i class="ico_change-name"></i>
+                    <i class="ico_change-name" title="Change name"></i>
                 </h2>
                 <div class="company_header_icons">
-                    <i class="ico_phone" title="<p>+1-831-851-0444</p><p>+1-831-85</p>"></i>
-                    <i class="ico_email" title="<p>email: test@test.com</p>"></i>
-                    <i class="ico_geoposition" title="<p>Coordinats</p>"></i>
+                    <i class="ico_phone popup-open" data-popup="phones-popup" title="Phone number"></i>
+                    <div class="popup inline-view" id="phones-popup">
+                        <div class="form-group">
+                            <input type="text" value="+1-831-851-0444" />
+                            <label class="form-group_label">Phone</label>
+                            <i class="edited-save"></i><i class="edited-clear"></i>
+                        </div>
+                    </div> 
+                    <i class="ico_email popup-open" data-popup="email-popup" title="Company email"></i>
+                    <div class="popup inline-view" id="email-popup">
+                        <div class="form-group">
+                            <input type="text" value="mail@mail.com" />
+                            <label class="form-group_label">Email</label>
+                            <i class="edited-save"></i><i class="edited-clear"></i>
+                        </div>
+                    </div> 
+                    <i class="ico_geoposition popup-open" title="Coordinats" data-popup="geoposition-popup"></i>
+                    <div class="popup inline-view" id="geoposition-popup">
+                        <div class="form-group">
+                            <input type="text" value="22 22" />
+                            <label class="form-group_label">Geocoordinates</label>
+                            <i class="edited-save"></i><i class="edited-clear"></i>
+                        </div>
+                    </div> 
                 </div>
             </section>
             <section class="company_employees company_data">
@@ -413,35 +434,36 @@
                                                             <input type="file" title="Load new photo" />
                                                         </div>
                                                         <div>
-                                                            <fieldset>
-                                                                <label>Edit Name</label>
+                                                            <fieldset class="form-group darkness">
                                                                 <input type="text" value="Jack" />
+                                                                <label>Edit Name</label>
                                                             </fieldset>
-                                                            <fieldset>
-                                                                <label>Edit Last Name</label>
+                                                            <fieldset class="form-group darkness has-error">
                                                                 <input type="text" value="Jones" />
+                                                                <label>Edit Last Name</label>
+                                                                <span class="help-block">Error name</span>
                                                             </fieldset>
                                                         </div>
                                                         <div>
-                                                            <fieldset>
-                                                                <label>Edit Email</label>
+                                                            <fieldset class="form-group darkness">
                                                                 <input type="text" value="j_jones@gmail.com" />
+                                                                <label>Edit Email</label>
                                                             </fieldset>
-                                                            <fieldset>
-                                                                <label>Edit Phone</label>
+                                                            <fieldset class="form-group darkness">
                                                                 <input type="text" value="+1 499 234 6785" />
+                                                                <label>Edit Phone</label>
                                                             </fieldset>
                                                         </div>
                                                     </div>
                                                     <p class="employees_edit_profile_privilegies">Acces Privileges</p>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad1" name="rr1" /><label for="rad1">Manager</label>
+                                                        <input type="radio" id="rad19" name="rr19" /><label for="rad19">Manager</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad2" name="rr1" /><label for="rad2">Supervisor</label>
+                                                        <input type="radio" id="rad29" name="rr19" /><label for="rad29">Supervisor</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad3" name="rr1" /><label for="rad3">Employee</label>
+                                                        <input type="radio" id="rad39" name="rr19" /><label for="rad39">Employee</label>
                                                     </fieldset>
                                                 </div>
                                                 <div class="js-tabs_body" data-tab="em_prof_locate">
@@ -706,13 +728,13 @@
                                                     </div>
                                                     <p class="employees_edit_profile_privilegies">Acces Privileges</p>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad13" name="rr1" /><label for="rad13">Manager</label>
+                                                        <input type="radio" id="rad13" name="rr18" /><label for="rad13">Manager</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad23" name="rr1" /><label for="rad23">Supervisor</label>
+                                                        <input type="radio" id="rad23" name="rr18" /><label for="rad23">Supervisor</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad33" name="rr1" /><label for="rad33">Employee</label>
+                                                        <input type="radio" id="rad33" name="rr18" /><label for="rad33">Employee</label>
                                                     </fieldset>
                                                 </div>
                                                 <div class="js-tabs_body" data-tab="em_prof_locate">
@@ -977,13 +999,13 @@
                                                     </div>
                                                     <p class="employees_edit_profile_privilegies">Acces Privileges</p>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad14" name="rr1" /><label for="rad14">Manager</label>
+                                                        <input type="radio" id="rad14" name="rr17" /><label for="rad14">Manager</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad24" name="rr1" /><label for="rad24">Supervisor</label>
+                                                        <input type="radio" id="rad24" name="rr17" /><label for="rad24">Supervisor</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad34" name="rr1" /><label for="rad34">Employee</label>
+                                                        <input type="radio" id="rad34" name="rr17" /><label for="rad34">Employee</label>
                                                     </fieldset>
                                                 </div>
                                                 <div class="js-tabs_body" data-tab="em_prof_locate">
@@ -1248,13 +1270,13 @@
                                                     </div>
                                                     <p class="employees_edit_profile_privilegies">Acces Privileges</p>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad15" name="rr1" /><label for="rad15">Manager</label>
+                                                        <input type="radio" id="rad15" name="rr16" /><label for="rad15">Manager</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad25" name="rr1" /><label for="rad25">Supervisor</label>
+                                                        <input type="radio" id="rad25" name="rr16" /><label for="rad25">Supervisor</label>
                                                     </fieldset>
                                                     <fieldset class="employees_edit_profile_privilegies">
-                                                        <input type="radio" id="rad35" name="rr1" /><label for="rad35">Employee</label>
+                                                        <input type="radio" id="rad35" name="rr16" /><label for="rad35">Employee</label>
                                                     </fieldset>
                                                 </div>
                                                 <div class="js-tabs_body" data-tab="em_prof_locate">
